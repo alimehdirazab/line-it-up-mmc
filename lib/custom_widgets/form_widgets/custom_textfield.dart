@@ -10,7 +10,7 @@ class CustomTextField extends StatelessWidget {
     this.inputFormatters,
     this.onChanged,
     this.onTap,
-    this.filled = true,
+    this.filled = false,
     this.fillColor,
     this.suffixIcon,
     this.prefixIcon,
@@ -95,30 +95,26 @@ class CustomTextField extends StatelessWidget {
         fillColor: fillColor,
         border: border,
         enabledBorder: enabledBorder ??
-            OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(
-                color: Colors.transparent,
+            UnderlineInputBorder(
+              borderSide: BorderSide(
+                color: LineItUpColorTheme().grey30,
               ),
             ),
         focusedBorder: focusedBorder ??
-            OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(
-                color: Colors.transparent,
+            UnderlineInputBorder(
+              borderSide: BorderSide(
+                color: LineItUpColorTheme().grey30,
               ),
             ),
         errorBorder: errorBorder ??
-            OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(
+            const UnderlineInputBorder(
+              borderSide: BorderSide(
                 color: Colors.red,
               ),
             ),
         focusedErrorBorder: focusedErrorBorder ??
-            OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: const BorderSide(
+            const UnderlineInputBorder(
+              borderSide: BorderSide(
                 color: Colors.red,
               ),
             ),
@@ -128,7 +124,7 @@ class CustomTextField extends StatelessWidget {
         hintStyle: hintStyle ??
             LineItUpTextTheme()
                 .body
-                .copyWith(color: LineItUpColorTheme().white.withOpacity(0.4)),
+                .copyWith(color: LineItUpColorTheme().black.withOpacity(0.4)),
         isDense: isDense,
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,

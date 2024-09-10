@@ -68,7 +68,7 @@ class CustomElevatedButton extends StatelessWidget {
                       title,
                       style: LineItUpTextTheme().body.copyWith(
                             color: fontColor ?? LineItUpColorTheme().white,
-                            fontSize: fontSize ?? 18,
+                            fontSize: fontSize ?? 16,
                           ),
                     ),
                   ],
@@ -77,7 +77,7 @@ class CustomElevatedButton extends StatelessWidget {
                   title,
                   style: LineItUpTextTheme().body.copyWith(
                         color: fontColor ?? LineItUpColorTheme().white,
-                        fontSize: fontSize ?? 18,
+                        fontSize: fontSize ?? 16,
                       ),
                   textAlign: TextAlign.center,
                 ),
