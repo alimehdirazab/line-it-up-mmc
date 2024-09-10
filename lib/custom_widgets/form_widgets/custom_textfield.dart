@@ -131,7 +131,7 @@ class CustomTextField extends StatelessWidget {
         prefixText: prefixText,
         prefixStyle: prefixStyle ?? LineItUpTextTheme().body,
         contentPadding:
-            contentPadding ?? const EdgeInsets.fromLTRB(16, 12, 16, 12),
+            contentPadding ?? const EdgeInsets.fromLTRB(0, 12, 16, 12),
         suffixIconConstraints: suffixIconConstraints,
         labelText: labelText,
         labelStyle: labelStyle ?? LineItUpTextTheme().body,

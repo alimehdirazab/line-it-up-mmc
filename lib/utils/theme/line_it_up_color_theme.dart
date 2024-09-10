@@ -18,6 +18,8 @@ class LineItUpColorTheme {
 
   Color get grey => const Color(0xFF8D8D8D);
 
+  Color get grey10 => const Color(0xFFD9D9D9);
+
   Color get grey20 => const Color(0xFFF6F6F6);
 
   Color get grey30 => const Color(0xFFE3E3E3);

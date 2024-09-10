@@ -15,7 +15,7 @@
     "delivery_at_doorstep_description": "Enjoy easy online ordering with direct rider delivery to your door.",
     "track_order_description": "Stay updated with live order tracking and notifications.",
     "by_logging_in_or_registering": "By logging in or registering, you agree to our ",
-    "terms_of": "Terms of\n",
+    "terms_of": "Terms of",
     "services": "services ",
     "and": "and ",
     "privacy_policy": "privacy policy",
@@ -42,5 +42,10 @@
     "email_address_sign_in": "We need your email address for signing in your account",
     "dont_have_account": "Don't have an account?",
     "sign_up": "Sign Up",
-    "your_password": "Your password"
+    "your_password": "Your password",
+    "home": "Home",
+    "delivery": "Delivery",
+    "line_skipper": "Line Skipper",
+    "orders": "Orders",
+    "profile": "Profile"
 }

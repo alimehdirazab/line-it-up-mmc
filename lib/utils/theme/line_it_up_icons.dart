@@ -25,5 +25,15 @@ class LineItUpIcons {
 
   IconData get rightArrow => Icons.arrow_forward_ios_outlined;
 
+  IconData get home => Icons.home_outlined;
+
+  IconData get delivery => Icons.delivery_dining; //delivery icon
+
+  IconData get lineskipper => Icons.hourglass_bottom;
+
+  IconData get orders => Icons.access_time;
+
+  IconData get profile => Icons.person_outline;
+
 //no delivery icon
 }

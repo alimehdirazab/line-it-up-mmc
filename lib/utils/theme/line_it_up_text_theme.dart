@@ -6,7 +6,7 @@ class LineItUpTextTheme {
   }) : _baseTextStyle = TextStyle(
           fontFamily: fontFamily,
           fontWeight: LineItUpFontWeight.regular,
-          letterSpacing: -0.8,
+          letterSpacing: 0.8,
           height: 1.15,
         );
 

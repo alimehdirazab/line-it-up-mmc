@@ -112,60 +112,53 @@ class __OnboardingViewState extends State<_OnboardingView> {
                   }),
             ),
             SizedBox(height: context.mHeight * 0.02),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text.rich(
-                  TextSpan(
-                    children: [
-                      TextSpan(
-                        text:
-                            translate(context, 'by_logging_in_or_registering'),
-                        style: LineItUpTextTheme().body.copyWith(
-                              fontSize: 12,
-                              color:
-                                  LineItUpColorTheme().black.withOpacity(0.5),
-                            ),
-                      ),
-                      TextSpan(
-                        text: translate(context, 'terms_of'),
-                        style: LineItUpTextTheme().body.copyWith(
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              color:
-                                  LineItUpColorTheme().black.withOpacity(0.8),
-                            ),
-                      ),
-                      TextSpan(
-                        text: translate(context, 'services'),
-                        style: LineItUpTextTheme().body.copyWith(
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              color:
-                                  LineItUpColorTheme().black.withOpacity(0.8),
-                            ),
-                      ),
-                      TextSpan(
-                        text: translate(context, 'and'),
-                        style: LineItUpTextTheme().body.copyWith(
-                              fontSize: 12,
-                              color:
-                                  LineItUpColorTheme().black.withOpacity(0.5),
-                            ),
-                      ),
-                      TextSpan(
-                        text: translate(context, 'privacy_policy'),
-                        style: LineItUpTextTheme().body.copyWith(
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              color:
-                                  LineItUpColorTheme().black.withOpacity(0.8),
-                            ),
-                      ),
-                    ],
-                  ),
+            Center(
+              child: Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(
+                      text: translate(context, 'by_logging_in_or_registering'),
+                      style: LineItUpTextTheme().body.copyWith(
+                            fontSize: 12,
+                            color: LineItUpColorTheme().black.withOpacity(0.5),
+                          ),
+                    ),
+                    TextSpan(
+                      text: translate(context, 'terms_of'),
+                      style: LineItUpTextTheme().body.copyWith(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            color: LineItUpColorTheme().black.withOpacity(0.8),
+                          ),
+                    ),
+                    TextSpan(
+                      text: translate(context, 'services'),
+                      style: LineItUpTextTheme().body.copyWith(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            color: LineItUpColorTheme().black.withOpacity(0.8),
+                          ),
+                    ),
+                    TextSpan(
+                      text: translate(context, 'and'),
+                      style: LineItUpTextTheme().body.copyWith(
+                            fontSize: 12,
+                            color: LineItUpColorTheme().black.withOpacity(0.5),
+                          ),
+                    ),
+                    TextSpan(
+                      text: translate(context, 'privacy_policy'),
+                      style: LineItUpTextTheme().body.copyWith(
+                            fontSize: 12,
+                            fontWeight: FontWeight.bold,
+                            color: LineItUpColorTheme().black.withOpacity(0.8),
+                          ),
+                    ),
+                  ],
                 ),
-              ],
+                softWrap: true, // Allows text to wrap
+                textAlign: TextAlign.center, // Centers the text
+              ),
             ),
           ],
         ),
@@ -178,7 +171,7 @@ class __OnboardingViewState extends State<_OnboardingView> {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
       margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 4.0),
-      height: currentPage == index ? 12.0 : 8.0, // Expanding height
+      height: currentPage == index ? 12.0 : 12.0, // Expanding height
       width: currentPage == index ? 12.0 : 8.0, // Expanding width
       decoration: BoxDecoration(
         shape: BoxShape.circle,
