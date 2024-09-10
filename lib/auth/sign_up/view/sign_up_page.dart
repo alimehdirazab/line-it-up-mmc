@@ -26,27 +26,30 @@ class SignUpView extends StatelessWidget {
                 IconButton(
                   icon: Icon(LineItUpIcons().backArrow,
                       color: LineItUpColorTheme().black),
-                  onPressed: () => Navigator.of(context).pop(),
+                  onPressed: () => context.popPage(),
                 ),
                 Image.asset(LineItUpImages.appogo,
                     height: context.mHeight * 0.2),
                 IconButton(
-                  icon: Icon(LineItUpIcons().cross,
-                      color: LineItUpColorTheme().black),
-                  onPressed: () => Navigator.of(context).pop(),
-                ),
+                    icon: Icon(LineItUpIcons().cross,
+                        color: LineItUpColorTheme().black),
+                    onPressed: () {
+                      context.pushAndRemoveUntilPage(const OnboardingPage());
+                    }),
               ],
             ),
-            Text('Enter your email address',
+            Text(translate(context, 'enter_your_email_address'),
                 style: LineItUpTextTheme().heading),
             SizedBox(height: context.mHeight * 0.01),
-            Text('We need your email address for account creation',
-                style: LineItUpTextTheme()
-                    .body
-                    .copyWith(fontSize: 14, fontWeight: FontWeight.w300)),
+            Text(
+              translate(context, 'need_email_for_account_creation'),
+              style: LineItUpTextTheme()
+                  .body
+                  .copyWith(fontSize: 14, fontWeight: FontWeight.w300),
+            ),
             SizedBox(height: context.mHeight * 0.04),
             Text(
-              'E-mail address',
+              translate(context, 'email_address'),
               style: LineItUpTextTheme().body.copyWith(
                     fontSize: 14,
                     fontWeight: FontWeight.w300,
@@ -60,20 +63,25 @@ class SignUpView extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  'Have an account?',
+                  translate(context, 'have_an_account'),
                   style: LineItUpTextTheme()
                       .body
                       .copyWith(fontSize: 14, fontWeight: FontWeight.w300),
                 ),
-                Text(
-                  ' log in',
-                  style: LineItUpTextTheme().body.copyWith(
-                        fontSize: 14,
-                        decoration: TextDecoration.underline,
-                        decorationColor: LineItUpColorTheme().primary,
-                        fontWeight: FontWeight.bold,
-                        color: LineItUpColorTheme().primary,
-                      ),
+                GestureDetector(
+                  onTap: () {
+                    context.pushPage(const LoginPage());
+                  },
+                  child: Text(
+                    translate(context, 'login'),
+                    style: LineItUpTextTheme().body.copyWith(
+                          fontSize: 14,
+                          decoration: TextDecoration.underline,
+                          decorationColor: LineItUpColorTheme().primary,
+                          fontWeight: FontWeight.bold,
+                          color: LineItUpColorTheme().primary,
+                        ),
+                  ),
                 ),
               ],
             ),
@@ -81,7 +89,7 @@ class SignUpView extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: CustomElevatedButton(
-                title: 'Continue',
+                title: translate(context, 'continue'),
                 onTap: () => context.pushPage(const OtpPage()),
               ),
             ),

@@ -1,5 +1,9 @@
 part of 'generics.dart';
 
+String translate(BuildContext context, String key) {
+  return Localization.of(context)?.translate(key) ?? "Undefined translation";
+}
+
 String formattedDateDMY(DateTime dateTime) {
   String twoDigitString(int value) => value.toString().padLeft(2, '0');
 

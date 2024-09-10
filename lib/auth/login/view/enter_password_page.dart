@@ -1,23 +1,16 @@
 part of 'view.dart';
 
-class OtpPage extends StatelessWidget {
-  const OtpPage({super.key});
+class EnterPasswordPage extends StatelessWidget {
+  const EnterPasswordPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const OtpView();
+    return const EnterPasswordView();
   }
 }
 
-class OtpView extends StatefulWidget {
-  const OtpView({super.key});
-
-  @override
-  State<OtpView> createState() => _OtpViewState();
-}
-
-class _OtpViewState extends State<OtpView> {
-  final int _resendTimerSeconds = 60;
+class EnterPasswordView extends StatelessWidget {
+  const EnterPasswordView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -46,42 +39,42 @@ class _OtpViewState extends State<OtpView> {
               ],
             ),
             Text(
-              translate(context, 'enter_otp'),
+              translate(context, 'enter_password'),
               style: LineItUpTextTheme().heading,
-            ),
-            SizedBox(height: context.mHeight * 0.01),
-            Text(
-              translate(context, 'otp_code_sent'),
-              style: LineItUpTextTheme()
-                  .body
-                  .copyWith(fontSize: 14, fontWeight: FontWeight.w300),
             ),
             SizedBox(height: context.mHeight * 0.04),
             Text(
-              translate(context, 'otp'),
+              translate(context, 'your_password'),
               style: LineItUpTextTheme().body.copyWith(
                     fontSize: 14,
                     fontWeight: FontWeight.w300,
                   ),
             ),
-            CustomTextField(
-              hintText: '.  .  .  .  .  .',
-              keyboardType: TextInputType.number,
-              suffixIcon: Text(
-                '0:$_resendTimerSeconds',
-                style: LineItUpTextTheme()
-                    .body
-                    .copyWith(fontSize: 14, fontWeight: FontWeight.w600),
-              ),
+            const CustomTextField(
+              hintText: '********',
+              keyboardType: TextInputType.emailAddress,
             ),
             SizedBox(height: context.mHeight * 0.04),
+            Row(
+              children: [
+                GestureDetector(
+                  onTap: () {},
+                  child: Text(
+                    translate(context, 'show_password'),
+                    style: LineItUpTextTheme().body.copyWith(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          color: LineItUpColorTheme().primary,
+                        ),
+                  ),
+                ),
+              ],
+            ),
             const Spacer(),
             SizedBox(
               width: double.infinity,
               child: CustomElevatedButton(
-                title: translate(context, 'continue'),
-                onTap: () => context.pushPage(const CreatePasswordPage()),
-              ),
+                  title: translate(context, 'login'), onTap: () {}),
             ),
           ],
         ),

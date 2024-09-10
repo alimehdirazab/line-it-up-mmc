@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:general_repository/general_repository.dart';
 import 'package:line_it_up/app/cubit/app_cubit.dart';
-import 'package:line_it_up/auth/sign_up/view/view.dart';
 import 'package:line_it_up/onboarding/view/view.dart';
 import 'package:localization/localization.dart';
 import '../../utils/utils.dart';
@@ -54,15 +53,11 @@ class AppView extends StatelessWidget {
       supportedLocales: LocalizationSetup.supportedLocales,
       localizationsDelegates: LocalizationSetup.localizationsDelegates,
       localeResolutionCallback: LocalizationSetup.localeResolutionCallback,
-      home: _buildPages(appState),
+      home: _buildPages(),
     );
   }
 
-  Widget _buildPages(AppState appState) {
-    if (appState.showOnboarding == true) {
-      return const SignUpPage();
-    } else {
-      return const OnboardingPage();
-    }
+  Widget _buildPages() {
+    return const OnboardingPage();
   }
 }

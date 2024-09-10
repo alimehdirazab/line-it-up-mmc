@@ -1,23 +1,23 @@
 part of 'view.dart';
 
-class OtpPage extends StatelessWidget {
-  const OtpPage({super.key});
+class EnterPhonePage extends StatelessWidget {
+  const EnterPhonePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const OtpView();
+    return const EnterPhoneView();
   }
 }
 
-class OtpView extends StatefulWidget {
-  const OtpView({super.key});
+class EnterPhoneView extends StatefulWidget {
+  const EnterPhoneView({super.key});
 
   @override
-  State<OtpView> createState() => _OtpViewState();
+  State<EnterPhoneView> createState() => _EnterPhoneViewState();
 }
 
-class _OtpViewState extends State<OtpView> {
-  final int _resendTimerSeconds = 60;
+class _EnterPhoneViewState extends State<EnterPhoneView> {
+  String selectedCountryCode = '+1'; // Default country code
 
   @override
   Widget build(BuildContext context) {
@@ -46,41 +46,48 @@ class _OtpViewState extends State<OtpView> {
               ],
             ),
             Text(
-              translate(context, 'enter_otp'),
+              translate(context, 'enter_your_phone_number'),
               style: LineItUpTextTheme().heading,
-            ),
-            SizedBox(height: context.mHeight * 0.01),
-            Text(
-              translate(context, 'otp_code_sent'),
-              style: LineItUpTextTheme()
-                  .body
-                  .copyWith(fontSize: 14, fontWeight: FontWeight.w300),
             ),
             SizedBox(height: context.mHeight * 0.04),
             Text(
-              translate(context, 'otp'),
+              translate(context, 'phone_number'),
               style: LineItUpTextTheme().body.copyWith(
                     fontSize: 14,
                     fontWeight: FontWeight.w300,
                   ),
             ),
-            CustomTextField(
-              hintText: '.  .  .  .  .  .',
-              keyboardType: TextInputType.number,
-              suffixIcon: Text(
-                '0:$_resendTimerSeconds',
-                style: LineItUpTextTheme()
-                    .body
-                    .copyWith(fontSize: 14, fontWeight: FontWeight.w600),
-              ),
+            Row(
+              children: [
+                CountryCodePicker(
+                  onChanged: (country) {
+                    setState(() {
+                      selectedCountryCode = country.dialCode!;
+                    });
+                  },
+                  initialSelection: selectedCountryCode,
+                  favorite: const ['+1', 'US'],
+                  showFlag: true,
+                  alignLeft: false,
+                  textStyle: LineItUpTextTheme().body.copyWith(
+                        fontSize: 14,
+                        color: LineItUpColorTheme().black,
+                      ),
+                ),
+                const Flexible(
+                  child: CustomTextField(
+                    hintText: 'Phone number',
+                    keyboardType: TextInputType.phone,
+                  ),
+                ),
+              ],
             ),
-            SizedBox(height: context.mHeight * 0.04),
             const Spacer(),
             SizedBox(
               width: double.infinity,
               child: CustomElevatedButton(
-                title: translate(context, 'continue'),
-                onTap: () => context.pushPage(const CreatePasswordPage()),
+                title: translate(context, 'almost_there'),
+                onTap: () => context.pushPage(const EnterPhonePage()),
               ),
             ),
           ],

@@ -5,7 +5,7 @@ class ReEnterPasswordPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CreatePasswordView();
+    return const ReEnterPasswordView();
   }
 }
 
@@ -26,27 +26,32 @@ class ReEnterPasswordView extends StatelessWidget {
                 IconButton(
                   icon: Icon(LineItUpIcons().backArrow,
                       color: LineItUpColorTheme().black),
-                  onPressed: () => Navigator.of(context).pop(),
+                  onPressed: () => context.popPage(),
                 ),
                 Image.asset(LineItUpImages.appogo,
                     height: context.mHeight * 0.2),
                 IconButton(
-                  icon: Icon(LineItUpIcons().cross,
-                      color: LineItUpColorTheme().black),
-                  onPressed: () => Navigator.of(context).pop(),
-                ),
+                    icon: Icon(LineItUpIcons().cross,
+                        color: LineItUpColorTheme().black),
+                    onPressed: () {
+                      context.pushAndRemoveUntilPage(const OnboardingPage());
+                    }),
               ],
             ),
-            Text('Re-enter password', style: LineItUpTextTheme().heading),
+            Text(
+              translate(context, 're_enter_password'),
+              style: LineItUpTextTheme().heading,
+            ),
             SizedBox(height: context.mHeight * 0.01),
             Text(
-                'Use at least 8 characters, a combination of number and letters',
-                style: LineItUpTextTheme()
-                    .body
-                    .copyWith(fontSize: 14, fontWeight: FontWeight.w300)),
+              translate(context, 'use_at_least_8_characters'),
+              style: LineItUpTextTheme()
+                  .body
+                  .copyWith(fontSize: 14, fontWeight: FontWeight.w300),
+            ),
             SizedBox(height: context.mHeight * 0.04),
             Text(
-              'Enter password',
+              translate(context, 're_enter_password'),
               style: LineItUpTextTheme().body.copyWith(
                     fontSize: 14,
                     fontWeight: FontWeight.w300,
@@ -59,13 +64,15 @@ class ReEnterPasswordView extends StatelessWidget {
             SizedBox(height: context.mHeight * 0.04),
             Row(
               children: [
-                Text(
-                  ' Show password',
-                  style: LineItUpTextTheme().body.copyWith(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: LineItUpColorTheme().primary,
-                      ),
+                GestureDetector(
+                  child: Text(
+                    translate(context, 'show_password'),
+                    style: LineItUpTextTheme().body.copyWith(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                          color: LineItUpColorTheme().primary,
+                        ),
+                  ),
                 ),
               ],
             ),
@@ -73,8 +80,8 @@ class ReEnterPasswordView extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: CustomElevatedButton(
-                title: 'Continue',
-                onTap: () => context.pushPage(const OtpPage()),
+                title: translate(context, 'continue'),
+                onTap: () => context.pushPage(const EnterNamePage()),
               ),
             ),
           ],

@@ -46,35 +46,33 @@ class __OnboardingViewState extends State<_OnboardingView> {
                     context.read<OnboardingCubit>().changePage(index);
                   },
                 ),
-                items: const [
+                items: [
                   _SlidingPage(
-                    title: 'Instant pickup - skip the queue',
+                    title: translate(context, 'instant_pickup'),
                     description:
-                        'Receive your order without waiting in line—just place it and pick it up.',
+                        translate(context, 'instant_pickup_description'),
                     image: LineItUpImages.onboarding1,
                   ),
                   _SlidingPage(
-                    title: 'Order from home, grab on arrival',
+                    title: translate(context, 'order_from_home'),
                     description:
-                        'Place your order before you leave, and it’ll be ready when you arrive.',
+                        translate(context, 'order_from_home_description'),
                     image: LineItUpImages.onboarding2,
                   ),
                   _SlidingPage(
-                    title: 'Avoid the wait, enjoy the day',
-                    description:
-                        'Pick up your order at your convenience. No lines, no delays.',
+                    title: translate(context, 'avoid_wait'),
+                    description: translate(context, 'avoid_wait_description'),
                     image: LineItUpImages.onboarding3,
                   ),
                   _SlidingPage(
-                    title: 'Delivery at your doorstep',
+                    title: translate(context, 'delivery_at_doorstep'),
                     description:
-                        'Enjoy easy online ordering with direct rider delivery to your door.',
+                        translate(context, 'delivery_at_doorstep_description'),
                     image: LineItUpImages.onboarding4,
                   ),
                   _SlidingPage(
-                    title: 'Track your order in real time',
-                    description:
-                        'Stay updated with live order tracking and notifications.',
+                    title: translate(context, 'track_order'),
+                    description: translate(context, 'track_order_description'),
                     image: LineItUpImages.onboarding5,
                   ),
                 ],
@@ -95,24 +93,22 @@ class __OnboardingViewState extends State<_OnboardingView> {
             SizedBox(
               width: double.infinity,
               child: CustomElevatedButton(
-                  title: 'Login',
+                  title: translate(context, 'login'),
                   onTap: () {
-                    context.pushPage(const SignUpPage());
-                    context.read<AppCubit>().disableOnboarding();
+                    context.pushPage(const LoginPage());
                   }),
             ),
             SizedBox(height: context.mHeight * 0.01),
             SizedBox(
               width: double.infinity,
               child: CustomElevatedButton(
-                  title: 'i\'m new, Sign me up',
+                  title: translate(context, 'signup'),
                   buttonColor: Colors.transparent,
                   fontColor: LineItUpColorTheme().primary,
                   borderWidth: 1,
                   borderColor: LineItUpColorTheme().primary,
                   onTap: () {
                     context.pushPage(const SignUpPage());
-                    context.read<AppCubit>().disableOnboarding();
                   }),
             ),
             SizedBox(height: context.mHeight * 0.02),
@@ -123,7 +119,8 @@ class __OnboardingViewState extends State<_OnboardingView> {
                   TextSpan(
                     children: [
                       TextSpan(
-                        text: 'By logging in or registering, you agree to our ',
+                        text:
+                            translate(context, 'by_logging_in_or_registering'),
                         style: LineItUpTextTheme().body.copyWith(
                               fontSize: 12,
                               color:
@@ -131,7 +128,7 @@ class __OnboardingViewState extends State<_OnboardingView> {
                             ),
                       ),
                       TextSpan(
-                        text: 'Terms of\n',
+                        text: translate(context, 'terms_of'),
                         style: LineItUpTextTheme().body.copyWith(
                               fontSize: 12,
                               fontWeight: FontWeight.bold,
@@ -140,7 +137,7 @@ class __OnboardingViewState extends State<_OnboardingView> {
                             ),
                       ),
                       TextSpan(
-                        text: 'services ',
+                        text: translate(context, 'services'),
                         style: LineItUpTextTheme().body.copyWith(
                               fontSize: 12,
                               fontWeight: FontWeight.bold,
@@ -149,7 +146,7 @@ class __OnboardingViewState extends State<_OnboardingView> {
                             ),
                       ),
                       TextSpan(
-                        text: 'and ',
+                        text: translate(context, 'and'),
                         style: LineItUpTextTheme().body.copyWith(
                               fontSize: 12,
                               color:
@@ -157,7 +154,7 @@ class __OnboardingViewState extends State<_OnboardingView> {
                             ),
                       ),
                       TextSpan(
-                        text: 'privacy policy',
+                        text: translate(context, 'privacy_policy'),
                         style: LineItUpTextTheme().body.copyWith(
                               fontSize: 12,
                               fontWeight: FontWeight.bold,
@@ -206,30 +203,30 @@ class _SlidingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset(
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Flexible(
+          child: Image.asset(
             image,
           ),
-          Text(
-            title,
-            style: LineItUpTextTheme().heading.copyWith(
-                  fontSize: 20,
-                ),
-          ),
-          SizedBox(height: context.mHeight * 0.02),
-          Text(
-            description,
-            textAlign: TextAlign.center,
-            style: LineItUpTextTheme().body.copyWith(
-                  fontSize: 14,
-                  color: LineItUpColorTheme().black.withOpacity(0.5),
-                ),
-          ),
-        ],
-      ),
+        ),
+        Text(
+          title,
+          style: LineItUpTextTheme().heading.copyWith(
+                fontSize: 20,
+              ),
+        ),
+        SizedBox(height: context.mHeight * 0.02),
+        Text(
+          description,
+          textAlign: TextAlign.center,
+          style: LineItUpTextTheme().body.copyWith(
+                fontSize: 14,
+                color: LineItUpColorTheme().black.withOpacity(0.5),
+              ),
+        ),
+      ],
     );
   }
 }

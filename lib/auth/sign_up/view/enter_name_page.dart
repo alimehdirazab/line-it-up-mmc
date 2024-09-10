@@ -1,23 +1,16 @@
 part of 'view.dart';
 
-class OtpPage extends StatelessWidget {
-  const OtpPage({super.key});
+class EnterNamePage extends StatelessWidget {
+  const EnterNamePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const OtpView();
+    return const EnterNameView();
   }
 }
 
-class OtpView extends StatefulWidget {
-  const OtpView({super.key});
-
-  @override
-  State<OtpView> createState() => _OtpViewState();
-}
-
-class _OtpViewState extends State<OtpView> {
-  final int _resendTimerSeconds = 60;
+class EnterNameView extends StatelessWidget {
+  const EnterNameView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -46,41 +39,27 @@ class _OtpViewState extends State<OtpView> {
               ],
             ),
             Text(
-              translate(context, 'enter_otp'),
+              translate(context, 'whats_your_name'),
               style: LineItUpTextTheme().heading,
-            ),
-            SizedBox(height: context.mHeight * 0.01),
-            Text(
-              translate(context, 'otp_code_sent'),
-              style: LineItUpTextTheme()
-                  .body
-                  .copyWith(fontSize: 14, fontWeight: FontWeight.w300),
             ),
             SizedBox(height: context.mHeight * 0.04),
             Text(
-              translate(context, 'otp'),
+              translate(context, 'name'),
               style: LineItUpTextTheme().body.copyWith(
                     fontSize: 14,
                     fontWeight: FontWeight.w300,
                   ),
             ),
-            CustomTextField(
-              hintText: '.  .  .  .  .  .',
-              keyboardType: TextInputType.number,
-              suffixIcon: Text(
-                '0:$_resendTimerSeconds',
-                style: LineItUpTextTheme()
-                    .body
-                    .copyWith(fontSize: 14, fontWeight: FontWeight.w600),
-              ),
+            const CustomTextField(
+              hintText: 'Enter your full name',
+              keyboardType: TextInputType.emailAddress,
             ),
-            SizedBox(height: context.mHeight * 0.04),
             const Spacer(),
             SizedBox(
               width: double.infinity,
               child: CustomElevatedButton(
                 title: translate(context, 'continue'),
-                onTap: () => context.pushPage(const CreatePasswordPage()),
+                onTap: () => context.pushPage(const EnterPhonePage()),
               ),
             ),
           ],
