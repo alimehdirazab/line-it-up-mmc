@@ -7,4 +7,8 @@ class LineItUpImages {
   static const String onboarding3 = 'assets/images/onboarding_3.png';
   static const String onboarding4 = 'assets/images/onboarding_4.png';
   static const String onboarding5 = 'assets/images/onboarding_5.png';
+  static const String coffee = 'assets/images/categories/coffee.png';
+  static const String fastFood = 'assets/images/categories/fast_food.png';
+  static const String grocery = 'assets/images/categories/grocery.png';
+  static const String pizza = 'assets/images/categories/pizza.png';
 }
