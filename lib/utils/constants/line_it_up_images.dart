@@ -11,4 +11,10 @@ class LineItUpImages {
   static const String fastFood = 'assets/images/categories/fast_food.png';
   static const String grocery = 'assets/images/categories/grocery.png';
   static const String pizza = 'assets/images/categories/pizza.png';
+  static const String store1 = 'assets/images/store_1.png';
+  static const String store2 = 'assets/images/store_2.png';
+  static const String store3 = 'assets/images/store_3.png';
+  static const String store4 = 'assets/images/store_4.png';
+  static const String store5 = 'assets/images/store_5.png';
+  static const String manAvatar = 'assets/images/man_avatar.png';
 }

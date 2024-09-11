@@ -16,7 +16,7 @@ class CategoryCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(5),
       child: Container(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.fromLTRB(12, 16, 12, 16),
         decoration: BoxDecoration(
           color: isSelected
               ? LineItUpColorTheme().grey10
@@ -25,7 +25,7 @@ class CategoryCard extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Image.asset(categoryImage),
+            Image.asset(categoryImage, width: 40, height: 40),
             const SizedBox(height: 8),
             Text(
               categoryText,

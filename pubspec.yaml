@@ -24,6 +24,7 @@ dependencies:
   formz: ^0.7.0
   country_code_picker: ^3.0.0
   carousel_slider: ^5.0.0
+  google_maps_flutter: ^2.9.0
   
   
 

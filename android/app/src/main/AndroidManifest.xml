@@ -1,8 +1,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+<uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:label="line_it_up"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+
+        <!-- Google Maps API Key -->
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBgmPHKUs6S8r8Kk41UKP4IMzGUycoPiBU"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

@@ -27,4 +27,8 @@ class LineItUpColorTheme {
   Color get black40 => const Color(0xFF22272B);
 
   Color get white => const Color(0xFFFFFFFF);
+
+  Color get red => const Color(0xFFFF0000);
+
+  Color get green => const Color(0xFF0ADD08);
 }

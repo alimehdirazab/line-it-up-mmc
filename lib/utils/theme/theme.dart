@@ -82,9 +82,9 @@ class LineItUpTheme {
         labelStyle: _lineItUpTextTheme.body,
       );
 
-  AppBarTheme get appBarTheme => AppBarTheme(
+  AppBarTheme get appBarTheme => const AppBarTheme(
         backgroundColor: Colors.transparent,
-        foregroundColor: _lineItUpColorTheme.primary,
+        //foregroundColor: _lineItUpColorTheme.primary,
         systemOverlayStyle: SystemUiOverlayStyle.dark,
         elevation: 0,
       );

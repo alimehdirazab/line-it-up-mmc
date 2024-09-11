@@ -35,5 +35,9 @@ class LineItUpIcons {
 
   IconData get profile => Icons.person_outline;
 
+  IconData get phone => Icons.phone_android_outlined;
+
+  IconData get add => Icons.add;
+
 //no delivery icon
 }
