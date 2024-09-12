@@ -27,101 +27,42 @@ class FindingLineSkipperPageView extends StatelessWidget {
             zoomControlsEnabled: false,
           ),
           Positioned(
-            bottom: context.mHeight * 0.45,
+            bottom: context.mHeight * 0.80,
             left: context.mWidth * 0.05,
-            child: _buildLocationCard(
-              context,
-              translate(context, 'from'),
-              '12348 street, LA',
-              LineItUpColorTheme().red,
-            ),
-          ),
-          Positioned(
-            bottom: context.mHeight * 0.38,
-            left: context.mWidth * 0.05,
-            child: _buildLocationCard(
-              context,
-              translate(context, 'pick'),
-              'Cost Less Foods',
-              LineItUpColorTheme().green,
-            ),
-          ),
-          Positioned(
-              bottom: context.mHeight * 0.41,
-              left: context.mWidth * 0.80,
-              child: CircleAvatar(
-                radius: 22,
-                backgroundColor: LineItUpColorTheme().white,
-                child: IconButton(
-                  icon: Icon(
-                    LineItUpIcons().cross,
-                    color: LineItUpColorTheme().black,
-                  ),
+            child: Row(
+              children: [
+                Column(
+                  children: [
+                    _buildLocationCard(
+                      context,
+                      translate(context, 'from'),
+                      '12348 street, LA',
+                      LineItUpColorTheme().red,
+                    ),
+                    SizedBox(height: context.mHeight * 0.01),
+                    _buildLocationCard(
+                      context,
+                      translate(context, 'pick'),
+                      'Cost Less Foods',
+                      LineItUpColorTheme().green,
+                    ),
+                  ],
+                ),
+                SizedBox(width: context.mWidth * 0.15),
+                CircleIconButton(
+                  icon: LineItUpIcons().cross,
                   onPressed: () {
                     context.popPage();
                   },
                 ),
-              )),
-        ],
-      ),
-      bottomNavigationBar: Container(
-        padding: EdgeInsets.all(context.mWidth * 0.05),
-        width: double.infinity,
-        height: context.mHeight * 0.40,
-        decoration: BoxDecoration(
-          color: LineItUpColorTheme().white,
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(24),
-            topRight: Radius.circular(24),
-          ),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  translate(context, 'line_skipper_reaching_in'),
-                  style: LineItUpTextTheme()
-                      .body
-                      .copyWith(fontSize: 16, fontWeight: FontWeight.w600),
-                ),
-                Text(
-                  '3:45 min',
-                  style: LineItUpTextTheme()
-                      .body
-                      .copyWith(fontSize: 16, fontWeight: FontWeight.w600),
-                ),
               ],
             ),
-            SizedBox(height: context.mHeight * 0.02),
-            GeneralTile(
-              icon: LineItUpIcons().location,
-              title: translate(context, 'ordering_from'),
-              subtitle: '12348 street, LA',
-              trailing: LineItUpIcons().edit,
-            ),
-            SizedBox(height: context.mHeight * 0.02),
-            GeneralTile(
-              icon: LineItUpIcons().phone,
-              title: translate(context, 'receiver_contact'),
-              subtitle: '080803280208',
-              trailing: LineItUpIcons().edit,
-            ),
-            SizedBox(height: context.mHeight * 0.02),
-            SizedBox(
-              width: double.infinity,
-              child: CustomElevatedButton(
-                onTap: () {
-                  context.pushPage(const OrderListPage());
-                },
-                title: translate(context, 'continue'),
-                padding: const EdgeInsets.all(17),
-              ),
-            )
-          ],
-        ),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: _reachingBottomContainer(context),
+          )
+        ],
       ),
     );
   }
@@ -167,5 +108,243 @@ class FindingLineSkipperPageView extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  Widget _reachingBottomContainer(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(context.mWidth * 0.05),
+      width: double.infinity,
+      height: context.mHeight * 0.40,
+      decoration: BoxDecoration(
+        color: LineItUpColorTheme().white,
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(24),
+          topRight: Radius.circular(24),
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                translate(context, 'line_skipper_reaching_in'),
+                style: LineItUpTextTheme()
+                    .body
+                    .copyWith(fontSize: 16, fontWeight: FontWeight.w600),
+              ),
+              Text(
+                '3:45 min',
+                style: LineItUpTextTheme()
+                    .body
+                    .copyWith(fontSize: 16, fontWeight: FontWeight.w600),
+              ),
+            ],
+          ),
+          SizedBox(height: context.mHeight * 0.02),
+          const Divider(),
+          SizedBox(height: context.mHeight * 0.02),
+          Row(
+            children: [
+              Image.asset(LineItUpImages.manAvatar, width: 40, height: 41),
+              SizedBox(width: context.mWidth * 0.02),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Sam Karen',
+                      style: LineItUpTextTheme()
+                          .body
+                          .copyWith(fontSize: 14, fontWeight: FontWeight.w600)),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text(
+                        '4.5',
+                        style: LineItUpTextTheme().body.copyWith(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w400,
+                              color: LineItUpColorTheme().grey,
+                            ),
+                      ),
+                      SizedBox(width: context.mWidth * 0.02),
+                      Icon(
+                        LineItUpIcons().star,
+                        color: LineItUpColorTheme().yellow,
+                        size: 18,
+                      ),
+                    ],
+                  )
+                ],
+              )
+            ],
+          ),
+          SizedBox(height: context.mHeight * 0.02),
+          Container(
+            padding: EdgeInsets.all(context.mWidth * 0.05),
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: LineItUpColorTheme().grey20,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Row(
+              children: [
+                Icon(LineItUpIcons().infomsg,
+                    color: LineItUpColorTheme().black),
+                SizedBox(width: context.mWidth * 0.02),
+                Flexible(
+                  child: Text(
+                      translate(context,
+                          'the_line_skipper_will_contact_you_before_he_joins_the_queue_to_confirm_the_order'),
+                      style: LineItUpTextTheme().body.copyWith(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color: LineItUpColorTheme().black)),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: context.mHeight * 0.04),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(
+                width: context.mWidth * 0.55,
+                child: CustomElevatedButton(
+                  onTap: () {
+                    context.pushPage(const FindingOrderPage());
+                  },
+                  title: translate(context, 'continue'),
+                  padding: const EdgeInsets.all(17),
+                ),
+              ),
+              CircleIconButton(
+                icon: LineItUpIcons().phone1,
+                onPressed: () {},
+                backgroundColor: LineItUpColorTheme().grey20,
+                radius: 27,
+              ),
+              CircleIconButton(
+                icon: LineItUpIcons().message,
+                onPressed: () {
+                  showModalBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    backgroundColor: LineItUpColorTheme().white,
+                    builder: (context) {
+                      return const MapTypeBottomSheet();
+                    },
+                  );
+                },
+                backgroundColor: LineItUpColorTheme().grey20,
+                radius: 27,
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _connectingBottomContainer(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(context.mWidth * 0.05),
+      width: double.infinity,
+      height: context.mHeight * 0.30,
+      decoration: BoxDecoration(
+        color: LineItUpColorTheme().white,
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(24),
+          topRight: Radius.circular(24),
+        ),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            translate(context, 'connecting_you_to_line_skipper'),
+            style: LineItUpTextTheme()
+                .body
+                .copyWith(fontSize: 16, fontWeight: FontWeight.w600),
+          ),
+          SizedBox(height: context.mHeight * 0.05),
+          Row(
+            children: [
+              Text(
+                translate(context, 'connecting_in'),
+                style: LineItUpTextTheme().body.copyWith(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                    color: LineItUpColorTheme().grey),
+              ),
+              Text(
+                ' 30 Sec',
+                style: LineItUpTextTheme().body.copyWith(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      color: LineItUpColorTheme().grey,
+                    ),
+              ),
+            ],
+          ),
+          SizedBox(height: context.mHeight * 0.02),
+          const TimeProgressBar(currentIndex: 3)
+        ],
+      ),
+    );
+  }
+}
+
+class MapTypeBottomSheet extends StatelessWidget {
+  const MapTypeBottomSheet({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+        height: context.mHeight * 0.87,
+        width: double.infinity,
+        child: Padding(
+          padding: EdgeInsets.only(
+            left: 16,
+            right: 16,
+            top: 16,
+            bottom: MediaQuery.of(context).viewInsets.bottom + 16,
+          ), // Adjust the padding dynamically with keyboard height
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  IconButton(
+                    onPressed: () {},
+                    icon: Icon(LineItUpIcons().cross),
+                    color: LineItUpColorTheme().black,
+                  ),
+                  Image.asset(LineItUpImages.manAvatar, width: 31, height: 32),
+                  SizedBox(width: context.mWidth * 0.02),
+                  Text(
+                    'Sam Karen',
+                    style: LineItUpTextTheme()
+                        .body
+                        .copyWith(fontSize: 14, fontWeight: FontWeight.w600),
+                  ),
+                  const Spacer(),
+                  CircleIconButton(
+                    icon: LineItUpIcons().phone1,
+                    backgroundColor: LineItUpColorTheme().grey20,
+                    radius: 27,
+                  )
+                ],
+              ),
+              const Spacer(),
+              CustomTextField(
+                hintText: translate(context, 'type_your_message'),
+                suffixIcon: IconButton(
+                  onPressed: () {},
+                  icon: Icon(LineItUpIcons().send),
+                ),
+              )
+            ],
+          ),
+        ));
   }
 }

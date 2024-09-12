@@ -37,7 +37,19 @@ class LineItUpIcons {
 
   IconData get phone => Icons.phone_android_outlined;
 
+  IconData get phone1 => Icons.phone_outlined;
+
   IconData get add => Icons.add;
+
+  IconData get star => Icons.star_outlined;
+
+  IconData get infomsg => Icons.info_outline_rounded;
+
+  IconData get message => Icons.message_outlined;
+
+  IconData get send => Icons.send;
+
+  IconData get share => Icons.share;
 
 //no delivery icon
 }

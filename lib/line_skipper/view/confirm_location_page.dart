@@ -33,9 +33,58 @@ class ConfirmLoactionView extends StatelessWidget {
             mapType: MapType.normal,
             zoomControlsEnabled: false,
           ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              padding: EdgeInsets.all(context.mWidth * 0.05),
+              width: double.infinity,
+              height: context.mHeight * 0.40,
+              decoration: BoxDecoration(
+                color: LineItUpColorTheme().white,
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(24),
+                  topRight: Radius.circular(24),
+                ),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(translate(context, 'confirm_location'),
+                      style: LineItUpTextTheme()
+                          .body
+                          .copyWith(fontSize: 16, fontWeight: FontWeight.w600)),
+                  SizedBox(height: context.mHeight * 0.02),
+                  GeneralTile(
+                    icon: LineItUpIcons().location,
+                    title: translate(context, 'ordering_from'),
+                    subtitle: '12348 street, LA',
+                    trailing: LineItUpIcons().edit,
+                  ),
+                  SizedBox(height: context.mHeight * 0.02),
+                  GeneralTile(
+                    icon: LineItUpIcons().phone,
+                    title: translate(context, 'receiver_contact'),
+                    subtitle: '080803280208',
+                    trailing: LineItUpIcons().edit,
+                  ),
+                  SizedBox(height: context.mHeight * 0.02),
+                  SizedBox(
+                    width: double.infinity,
+                    child: CustomElevatedButton(
+                      onTap: () {
+                        context.pushPage(const OrderListPage());
+                      },
+                      title: translate(context, 'continue'),
+                      padding: const EdgeInsets.all(17),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
           Positioned(
-            bottom: context.mHeight * 0.3,
-            left: context.mWidth * 0.1,
+            bottom: context.mHeight * 0.80,
+            left: context.mWidth * 0.08,
             child: _buildLocationCard(
               translate(context, 'pick'),
               'Cost Less Foods',
@@ -43,8 +92,8 @@ class ConfirmLoactionView extends StatelessWidget {
             ),
           ),
           Positioned(
-            bottom: context.mHeight * 0.1,
-            left: context.mWidth * 0.3,
+            bottom: context.mHeight * 0.50,
+            left: context.mWidth * 0.4,
             child: _buildLocationCard(
               translate(context, 'from'),
               '12348 street, LA',
@@ -52,52 +101,6 @@ class ConfirmLoactionView extends StatelessWidget {
             ),
           )
         ],
-      ),
-      bottomNavigationBar: Container(
-        padding: EdgeInsets.all(context.mWidth * 0.05),
-        width: double.infinity,
-        height: context.mHeight * 0.40,
-        decoration: BoxDecoration(
-          color: LineItUpColorTheme().white,
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(24),
-            topRight: Radius.circular(24),
-          ),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(translate(context, 'confirm_location'),
-                style: LineItUpTextTheme()
-                    .body
-                    .copyWith(fontSize: 16, fontWeight: FontWeight.w600)),
-            SizedBox(height: context.mHeight * 0.02),
-            GeneralTile(
-              icon: LineItUpIcons().location,
-              title: translate(context, 'ordering_from'),
-              subtitle: '12348 street, LA',
-              trailing: LineItUpIcons().edit,
-            ),
-            SizedBox(height: context.mHeight * 0.02),
-            GeneralTile(
-              icon: LineItUpIcons().phone,
-              title: translate(context, 'receiver_contact'),
-              subtitle: '080803280208',
-              trailing: LineItUpIcons().edit,
-            ),
-            SizedBox(height: context.mHeight * 0.02),
-            SizedBox(
-              width: double.infinity,
-              child: CustomElevatedButton(
-                onTap: () {
-                  context.pushPage(const OrderListPage());
-                },
-                title: translate(context, 'continue'),
-                padding: const EdgeInsets.all(17),
-              ),
-            )
-          ],
-        ),
       ),
     );
   }

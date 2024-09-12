@@ -8,3 +8,4 @@ part 'line_skipper_page.dart';
 part 'confirm_location_page.dart';
 part 'order_list_page.dart';
 part 'finding_line_skipper_page.dart';
+part 'finding_order_page.dart';

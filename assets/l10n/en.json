@@ -71,5 +71,17 @@
     "add_a_payment_method": "Add a payment method",
     "tip_for_rider": "Tip for rider",
     "your_selected_tip_go_directly_to_your_rider": "Your selected tip go directly to your rider",
-    "line_skipper_reaching_in": "Line Skipper reaching in"
+    "line_skipper_reaching_in": "Line Skipper reaching in",
+    "the_line_skipper_will_contact_you_before_he_joins_the_queue_to_confirm_the_order": "The line skipper will contact you before he joins the queue to confirm the order.",
+    "connecting_you_to_line_skipper": "Connecting you to line skipper",
+    "connecting_in": "Connecting in",
+    "type_your_message": "Type your message",
+    "confirm_order": "Confirm order",
+    "estimated_time_remaining": "Estimated time remaining",
+    "arrive_by": "Arrive by",
+    "order_details": "Order details",
+    "order_instruction": "Order instruction",
+    "line_skipper_details": "Line Skipper details",
+    "send_a_message": "Send a message",
+    "scan_qr_to_pay": "Scan Qr to Pay"
 }

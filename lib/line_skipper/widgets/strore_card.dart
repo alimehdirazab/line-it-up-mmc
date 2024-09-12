@@ -23,7 +23,8 @@ class StroreCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
+            width: context.mWidth * 0.3,
+            height: context.mHeight * 0.1,
             decoration: BoxDecoration(
                 border: Border.all(color: LineItUpColorTheme().grey20),
                 borderRadius: BorderRadius.circular(10)),

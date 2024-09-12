@@ -35,7 +35,7 @@ class LineItUpTheme {
   ColorScheme get colorScheme => const ColorScheme.light().copyWith(
         primary: _lineItUpColorTheme.primary,
         secondary: _lineItUpColorTheme.secondary,
-        surface: _lineItUpColorTheme.black,
+        //surface: _lineItUpColorTheme.black,
         surfaceTint: Colors.transparent,
       );
 
