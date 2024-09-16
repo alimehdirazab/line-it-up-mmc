@@ -344,7 +344,9 @@ class MapTypeBottomSheet extends StatelessWidget {
               Row(
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      context.popPage();
+                    },
                     icon: Icon(LineItUpIcons().cross),
                     color: LineItUpColorTheme().black,
                   ),
@@ -365,15 +367,51 @@ class MapTypeBottomSheet extends StatelessWidget {
                 ],
               ),
               const Spacer(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  _buildFastChatChip('hello', () {}),
+                  _buildFastChatChip('Thank You', () {}),
+                ],
+              ),
+              SizedBox(height: context.mHeight * 0.01),
+              const Divider(),
               CustomTextField(
                 hintText: translate(context, 'type_your_message'),
                 suffixIcon: IconButton(
                   onPressed: () {},
                   icon: Icon(LineItUpIcons().send),
                 ),
+                border: InputBorder.none,
+                enabledBorder: InputBorder.none,
+                focusedBorder: InputBorder.none,
               )
             ],
           ),
         ));
+  }
+
+  Widget _buildFastChatChip(String text, void Function()? onTap) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          padding: const EdgeInsets.all(12),
+          decoration: BoxDecoration(
+            color: LineItUpColorTheme().grey20,
+            borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(8),
+              bottomLeft: Radius.circular(8),
+              topRight: Radius.circular(8),
+            ),
+          ),
+          child: Text(text,
+              style: LineItUpTextTheme()
+                  .body
+                  .copyWith(fontSize: 14, fontWeight: FontWeight.w500)),
+        ),
+      ),
+    );
   }
 }

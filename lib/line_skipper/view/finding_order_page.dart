@@ -16,9 +16,11 @@ class FindingOrderView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(
-            vertical: context.mHeight * 0.05,
-            horizontal: context.mWidth * 0.03),
+        padding: EdgeInsets.only(
+          top: context.mHeight * 0.05,
+          left: context.mWidth * 0.03,
+          right: context.mWidth * 0.03,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -261,21 +263,25 @@ class FindingOrderView extends StatelessWidget {
                   ],
                 ),
               ),
+            ),
+            Container(
+              width: double.infinity,
+              padding: EdgeInsets.symmetric(
+                vertical: context.mHeight * 0.02,
+                horizontal: context.mWidth * 0.02,
+              ),
+              color: LineItUpColorTheme().white,
+              child: SizedBox(
+                width: double.infinity,
+                child: CustomElevatedButton(
+                  title: translate(context, 'scan_qr_to_pay'),
+                  onTap: () {
+                    context.pushPage(const ScanQrPage());
+                  },
+                ),
+              ),
             )
           ],
-        ),
-      ),
-      bottomNavigationBar: SizedBox(
-        height: context.mHeight * 0.1,
-        width: double.infinity,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
-          child: CustomElevatedButton(
-            title: translate(context, 'scan_qr_to_pay'),
-            onTap: () {
-              context.pushPage(const ScanQrPage());
-            },
-          ),
         ),
       ),
     );

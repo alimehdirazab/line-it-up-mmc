@@ -53,21 +53,21 @@ class ConfirmLoactionView extends StatelessWidget {
                       style: LineItUpTextTheme()
                           .body
                           .copyWith(fontSize: 16, fontWeight: FontWeight.w600)),
-                  SizedBox(height: context.mHeight * 0.02),
+                  const SizedBox(height: 17),
                   GeneralTile(
                     icon: LineItUpIcons().location,
                     title: translate(context, 'ordering_from'),
                     subtitle: '12348 street, LA',
                     trailing: LineItUpIcons().edit,
                   ),
-                  SizedBox(height: context.mHeight * 0.02),
+                  const SizedBox(height: 15),
                   GeneralTile(
                     icon: LineItUpIcons().phone,
                     title: translate(context, 'receiver_contact'),
                     subtitle: '080803280208',
                     trailing: LineItUpIcons().edit,
                   ),
-                  SizedBox(height: context.mHeight * 0.02),
+                  const SizedBox(height: 15),
                   SizedBox(
                     width: double.infinity,
                     child: CustomElevatedButton(

@@ -5,7 +5,10 @@ class LineSkipperPaymentPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const LineSkipperPaymentView();
+    return BlocProvider(
+      create: (context) => LineSkipperCubit(), // Provide LineSkipperCubit
+      child: const LineSkipperPaymentView(),
+    );
   }
 }
 
@@ -16,9 +19,11 @@ class LineSkipperPaymentView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(
-            vertical: context.mHeight * 0.05,
-            horizontal: context.mWidth * 0.04),
+        padding: EdgeInsets.only(
+          top: context.mHeight * 0.05,
+          left: context.mWidth * 0.03,
+          right: context.mWidth * 0.03,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -30,7 +35,7 @@ class LineSkipperPaymentView extends StatelessWidget {
                       color: LineItUpColorTheme().black),
                   onPressed: () => Navigator.pop(context),
                 ),
-                SizedBox(width: context.mWidth * 0.1),
+                SizedBox(width: context.mWidth * 0.19),
                 Text(translate(context, 'bill_summary'),
                     style: LineItUpTextTheme().body),
               ],
@@ -124,11 +129,13 @@ class LineSkipperPaymentView extends StatelessWidget {
                               color: LineItUpColorTheme().grey,
                             )),
                     SizedBox(height: context.mHeight * 0.03),
-                    Text(translate(context, 'tip_for_rider'),
-                        style: LineItUpTextTheme().body.copyWith(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                            )),
+                    Text(
+                      translate(context, 'tip_for_rider'),
+                      style: LineItUpTextTheme().body.copyWith(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                          ),
+                    ),
                     SizedBox(height: context.mHeight * 0.01),
                     Text(
                         translate(context,
@@ -139,17 +146,7 @@ class LineSkipperPaymentView extends StatelessWidget {
                               color: LineItUpColorTheme().grey,
                             )),
                     SizedBox(height: context.mHeight * 0.01),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        _buildChip('\$5', true),
-                        _buildChip('\$10', false),
-                        _buildChip('\$12', false),
-                        _buildChip('\$15', false),
-                        _buildChip('\$20', false),
-                        _buildChip('\$50', false),
-                      ],
-                    ),
+                    _buildTipChipSelector(),
                     SizedBox(height: context.mHeight * 0.03),
                     Text(translate(context, 'payment_method'),
                         style: LineItUpTextTheme().body.copyWith(
@@ -187,45 +184,95 @@ class LineSkipperPaymentView extends StatelessWidget {
                   ],
                 ),
               ),
+            ),
+            Container(
+              width: double.infinity,
+              padding: EdgeInsets.symmetric(
+                vertical: context.mHeight * 0.02,
+                horizontal: context.mWidth * 0.02,
+              ),
+              color: LineItUpColorTheme().white,
+              child: SizedBox(
+                width: double.infinity,
+                child: CustomElevatedButton(
+                  title: translate(context, 'pay_now'),
+                  onTap: () {
+                    context.pushPage(const PaymentSuccessView());
+                  },
+                ),
+              ),
             )
           ],
-        ),
-      ),
-      bottomNavigationBar: SizedBox(
-        height: context.mHeight * 0.1,
-        width: double.infinity,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
-          child: CustomElevatedButton(
-            title: translate(context, 'pay_now'),
-            onTap: () {
-              context.pushPage(const PaymentSuccessView());
-            },
-          ),
         ),
       ),
     );
   }
 
-  Widget _buildChip(String label, bool isSelected) {
-    return Chip(
-      label: Text(label),
-      backgroundColor: isSelected
-          ? LineItUpColorTheme().primary
-          : LineItUpColorTheme().white,
-      labelStyle: LineItUpTextTheme().body.copyWith(
-            fontSize: 12,
-            fontWeight: FontWeight.w600,
-            color: isSelected
-                ? LineItUpColorTheme().white
-                : LineItUpColorTheme().black,
+  // Tip Chip Selector
+  Widget _buildTipChipSelector() {
+    return BlocBuilder<LineSkipperCubit, LineSkipperState>(
+      builder: (context, state) {
+        return SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              _buildChip(
+                  context, '\$5', 0, state.selectedTipChipIndex == 0, false),
+              const SizedBox(width: 10),
+              _buildChip(
+                  context, '\$10', 1, state.selectedTipChipIndex == 1, false),
+              const SizedBox(width: 10),
+              _buildChip(
+                  context, '\$12', 2, state.selectedTipChipIndex == 2, false),
+              const SizedBox(width: 10),
+              _buildChip(
+                  context, '\$15', 3, state.selectedTipChipIndex == 3, false),
+              const SizedBox(width: 10),
+              _buildChip(
+                  context, '\$20', 4, state.selectedTipChipIndex == 4, false),
+              const SizedBox(width: 10),
+              _buildChip(
+                  context, '\$100', 5, state.selectedTipChipIndex == 5, false),
+              const SizedBox(width: 10),
+              _buildChip(
+                  context, '\$150', 6, state.selectedTipChipIndex == 6, false),
+            ],
           ),
-      labelPadding: const EdgeInsets.symmetric(horizontal: 5),
-      side: BorderSide(
-        color: isSelected
+        );
+      },
+    );
+  }
+
+  // Chip widget to handle both price and tip chips
+  Widget _buildChip(BuildContext context, String label, int index,
+      bool isSelected, bool isPrice) {
+    return GestureDetector(
+      onTap: () {
+        if (isPrice) {
+          context.read<LineSkipperCubit>().selectPriceChip(index);
+        } else {
+          context.read<LineSkipperCubit>().selectTipChip(index);
+        }
+      },
+      child: Chip(
+        label: Text(label),
+        backgroundColor: isSelected
             ? LineItUpColorTheme().primary
-            : LineItUpColorTheme().grey,
-        width: 0.2,
+            : LineItUpColorTheme().white,
+        labelStyle: LineItUpTextTheme().body.copyWith(
+              fontSize: 12,
+              fontWeight: FontWeight.w600,
+              color: isSelected
+                  ? LineItUpColorTheme().white
+                  : LineItUpColorTheme().black,
+            ),
+        labelPadding: const EdgeInsets.symmetric(horizontal: 5),
+        side: BorderSide(
+          color: isSelected
+              ? LineItUpColorTheme().primary
+              : LineItUpColorTheme().grey,
+          width: 0.2,
+        ),
       ),
     );
   }

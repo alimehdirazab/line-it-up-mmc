@@ -42,9 +42,25 @@ class _ScanQrViewState extends State<ScanQrView> {
 
   @override
   Widget build(BuildContext context) {
-    return MobileScanner(
-      controller: controller,
-      onDetect: (BarcodeCapture capture) => _onDetect(capture),
+    return Stack(
+      children: [
+        MobileScanner(
+          controller: controller,
+          onDetect: (BarcodeCapture capture) => _onDetect(capture),
+        ),
+        Positioned(
+          top: context.mHeight * 0.05,
+          left: context.mWidth * 0.05,
+          child: IconButton(
+            icon: Icon(
+              LineItUpIcons().backArrow,
+              color: LineItUpColorTheme().white,
+              size: 35,
+            ),
+            onPressed: () => context.popPage(),
+          ),
+        ),
+      ],
     );
   }
 }

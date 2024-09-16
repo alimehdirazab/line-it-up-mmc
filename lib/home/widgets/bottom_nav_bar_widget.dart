@@ -113,6 +113,7 @@ class _BottomNavBarItem extends StatelessWidget {
                             : LineItUpColorTheme().grey,
                         fontSize: 12,
                       ),
+                  textAlign: TextAlign.center,
                 ),
               ],
             ),

@@ -33,23 +33,32 @@ class _HomeViewPages extends StatelessWidget {
       buildWhen: (previous, current) =>
           previous.navBarItem != current.navBarItem,
       builder: (context, state) {
-        return _buildPages(state);
+        return IndexedStack(
+          index: _buildPageIndex(state),
+          children: const [
+            Placeholder(),
+            Placeholder(),
+            LineSkipperView(),
+            Placeholder(),
+            Placeholder(),
+          ],
+        );
       },
     );
   }
 
-  Widget _buildPages(HomeState state) {
+  int _buildPageIndex(HomeState state) {
     switch (state.navBarItem) {
       case NavBarItem.home:
-        return const Placeholder();
+        return 0;
       case NavBarItem.delivery:
-        return const Placeholder();
+        return 1;
       case NavBarItem.lineskipper:
-        return const LineSkipperPage();
+        return 2;
       case NavBarItem.orders:
-        return const Placeholder();
+        return 3;
       case NavBarItem.profile:
-        return const Placeholder();
+        return 4;
     }
   }
 }

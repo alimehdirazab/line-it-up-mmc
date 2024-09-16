@@ -70,8 +70,9 @@ class LineSkipperView extends StatelessWidget {
                   ],
                 ),
               ),
+              const SizedBox(height: 10),
               const Divider(),
-              SizedBox(height: context.mHeight * 0.02),
+              const SizedBox(height: 20),
               GeneralTile(
                   icon: LineItUpIcons().location,
                   title: translate(context, 'nearby'),
@@ -80,32 +81,32 @@ class LineSkipperView extends StatelessWidget {
                   onTap: () {
                     context.pushPage(const ConfirmLocationPage());
                   }),
-              SizedBox(height: context.mHeight * 0.02),
+              const SizedBox(height: 20),
               const StroreCard(
                 image: LineItUpImages.store1,
                 name: 'Cost Less Food Company',
                 distance: '2.3 mi',
               ),
-              SizedBox(height: context.mHeight * 0.02),
+              const SizedBox(height: 20),
               const StroreCard(
                 image: LineItUpImages.store2,
                 name: 'Food for Health',
                 distance: '2.3 mi',
                 isClosed: true,
               ),
-              SizedBox(height: context.mHeight * 0.02),
+              const SizedBox(height: 20),
               const StroreCard(
                 image: LineItUpImages.store3,
                 name: 'Bristol Farms',
                 distance: '2.3 mi',
               ),
-              SizedBox(height: context.mHeight * 0.02),
+              const SizedBox(height: 20),
               const StroreCard(
                 image: LineItUpImages.store4,
                 name: 'Pavilions',
                 distance: '2.3 mi',
               ),
-              SizedBox(height: context.mHeight * 0.02),
+              const SizedBox(height: 20),
               const StroreCard(
                 image: LineItUpImages.store5,
                 name: 'Food for Health',
