@@ -171,10 +171,11 @@ class __OnboardingViewState extends State<_OnboardingView> {
     return AnimatedContainer(
       duration: const Duration(milliseconds: 300),
       margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 4.0),
-      height: currentPage == index ? 12.0 : 12.0, // Expanding height
-      width: currentPage == index ? 12.0 : 8.0, // Expanding width
+      height: currentPage == index ? 8.0 : 8.0, // Expanding height
+      width: currentPage == index ? 22.0 : 8.0, // Expanding width
       decoration: BoxDecoration(
-        shape: BoxShape.circle,
+        borderRadius: BorderRadius.circular(10),
+        shape: BoxShape.rectangle,
         color: currentPage == index
             ? LineItUpColorTheme().primary // Active dot color
             : LineItUpColorTheme().grey20, // Inactive dot color

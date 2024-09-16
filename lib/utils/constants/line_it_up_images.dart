@@ -18,4 +18,5 @@ class LineItUpImages {
   static const String store5 = 'assets/images/store_5.png';
   static const String manAvatar = 'assets/images/man_avatar.png';
   static const String masterCard = 'assets/images/master_card_logo.png';
+  static const String checkVerified = 'assets/images/check_verified.png';
 }

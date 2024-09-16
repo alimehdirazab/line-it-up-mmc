@@ -101,10 +101,10 @@ class OrderListView extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _buildChip('\$5-20'),
-                _buildChip('\$20-40'),
-                _buildChip('\$40-60'),
-                _buildChip('\$60-80'),
+                _buildChip('\$5-20', false),
+                _buildChip('\$20-40', false),
+                _buildChip('\$40-60', false),
+                _buildChip('\$60-80', false),
               ],
             ),
             SizedBox(height: context.mHeight * 0.02),
@@ -160,12 +160,12 @@ class OrderListView extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _buildChip('\$5'),
-                _buildChip('\$10'),
-                _buildChip('\$12'),
-                _buildChip('\$15'),
-                _buildChip('\$20'),
-                _buildChip('\$50'),
+                _buildChip('\$5', false),
+                _buildChip('\$10', false),
+                _buildChip('\$12', false),
+                _buildChip('\$15', false),
+                _buildChip('\$20', false),
+                _buildChip('\$50', false),
               ],
             ),
             const Spacer(),
@@ -185,15 +185,26 @@ class OrderListView extends StatelessWidget {
     );
   }
 
-  Widget _buildChip(String label) {
+  Widget _buildChip(String label, bool isSelected) {
     return Chip(
       label: Text(label),
-      backgroundColor: LineItUpColorTheme().white,
+      backgroundColor: isSelected
+          ? LineItUpColorTheme().primary
+          : LineItUpColorTheme().white,
       labelStyle: LineItUpTextTheme().body.copyWith(
             fontSize: 12,
             fontWeight: FontWeight.w600,
+            color: isSelected
+                ? LineItUpColorTheme().white
+                : LineItUpColorTheme().black,
           ),
       labelPadding: const EdgeInsets.symmetric(horizontal: 5),
+      side: BorderSide(
+        color: isSelected
+            ? LineItUpColorTheme().primary
+            : LineItUpColorTheme().grey,
+        width: 0.2,
+      ),
     );
   }
 }

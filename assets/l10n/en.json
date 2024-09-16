@@ -83,5 +83,13 @@
     "order_instruction": "Order instruction",
     "line_skipper_details": "Line Skipper details",
     "send_a_message": "Send a message",
-    "scan_qr_to_pay": "Scan Qr to Pay"
+    "scan_qr_to_pay": "Scan Qr to Pay",
+    "bill_summary": "Bill Summary",
+    "line_skipper_name": "Line skipper name",
+    "queue_time": "Queue time",
+    "waiting_price": "Waiting price",
+    "total_amount": "Total Amount",
+    "pay_now": "Pay now",
+    "to": "To",
+    "oreder_id": "Oreder Id"
 }

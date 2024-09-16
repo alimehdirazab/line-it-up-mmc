@@ -272,7 +272,9 @@ class FindingOrderView extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
           child: CustomElevatedButton(
             title: translate(context, 'scan_qr_to_pay'),
-            onTap: () {},
+            onTap: () {
+              context.pushPage(const ScanQrPage());
+            },
           ),
         ),
       ),

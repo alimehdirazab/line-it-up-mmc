@@ -9,8 +9,17 @@ class FindingLineSkipperPage extends StatelessWidget {
   }
 }
 
-class FindingLineSkipperPageView extends StatelessWidget {
+class FindingLineSkipperPageView extends StatefulWidget {
   const FindingLineSkipperPageView({super.key});
+
+  @override
+  State<FindingLineSkipperPageView> createState() =>
+      _FindingLineSkipperPageViewState();
+}
+
+class _FindingLineSkipperPageViewState
+    extends State<FindingLineSkipperPageView> {
+  bool isReaching = false;
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +69,9 @@ class FindingLineSkipperPageView extends StatelessWidget {
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            child: _reachingBottomContainer(context),
+            child: isReaching
+                ? _reachingBottomContainer(context)
+                : _connectingBottomContainer(context),
           )
         ],
       ),
@@ -288,7 +299,25 @@ class FindingLineSkipperPageView extends StatelessWidget {
             ],
           ),
           SizedBox(height: context.mHeight * 0.02),
-          const TimeProgressBar(currentIndex: 3)
+          // const TimeProgressBar(currentIndex: 3)
+          LinearProgressIndicator(
+            value: 0.3,
+            backgroundColor: LineItUpColorTheme().grey20,
+            valueColor:
+                AlwaysStoppedAnimation<Color>(LineItUpColorTheme().primary),
+          ),
+          SizedBox(height: context.mHeight * 0.02),
+          Center(
+            child: GestureDetector(
+              onTap: () {
+                setState(() {
+                  isReaching = true;
+                });
+              },
+              child:
+                  Image.asset(LineItUpImages.manAvatar, width: 83, height: 83),
+            ),
+          ),
         ],
       ),
     );
