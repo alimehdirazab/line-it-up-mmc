@@ -243,7 +243,7 @@ class _FindingLineSkipperPageViewState
                     isScrollControlled: true,
                     backgroundColor: LineItUpColorTheme().white,
                     builder: (context) {
-                      return const MapTypeBottomSheet();
+                      return const ChatBottomSheet();
                     },
                   );
                 },
@@ -324,8 +324,8 @@ class _FindingLineSkipperPageViewState
   }
 }
 
-class MapTypeBottomSheet extends StatelessWidget {
-  const MapTypeBottomSheet({super.key});
+class ChatBottomSheet extends StatelessWidget {
+  const ChatBottomSheet({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -24,6 +24,8 @@ class LineItUpColorTheme {
 
   Color get grey30 => const Color(0xFFE3E3E3);
 
+  Color get grey40 => const Color(0xFFE4E4E4);
+
   Color get black40 => const Color(0xFF22272B);
 
   Color get white => const Color(0xFFFFFFFF);
@@ -31,6 +33,8 @@ class LineItUpColorTheme {
   Color get red => const Color(0xFFFF0000);
 
   Color get green => const Color(0xFF0ADD08);
+
+  Color get cGreen => const Color(0xFF45BA73);
 
   Color get yellow => const Color(0xFFE7C601);
 }

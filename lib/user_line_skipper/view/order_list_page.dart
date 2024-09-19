@@ -48,11 +48,11 @@ class OrderListView extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
               ),
-              SizedBox(height: context.mHeight * 0.01),
+              const SizedBox(height: 7),
               CustomTextField(
                 hintText: translate(context, 'list_one_product_at_a_time'),
               ),
-              SizedBox(height: context.mHeight * 0.01),
+              const SizedBox(height: 7),
               GestureDetector(
                 onTap: () {},
                 child: Row(
@@ -71,7 +71,7 @@ class OrderListView extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: context.mHeight * 0.02),
+              const SizedBox(height: 14),
               Text(
                 translate(context, 'other_instruction'),
                 style: LineItUpTextTheme().body.copyWith(
@@ -79,11 +79,11 @@ class OrderListView extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
               ),
-              SizedBox(height: context.mHeight * 0.01),
+              const SizedBox(height: 7),
               CustomTextField(
                 hintText: translate(context, 'write_instructions'),
               ),
-              SizedBox(height: context.mHeight * 0.02),
+              const SizedBox(height: 14),
               Text(
                 translate(context, 'estimated_order_price'),
                 style: LineItUpTextTheme().body.copyWith(
@@ -91,7 +91,7 @@ class OrderListView extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
               ),
-              SizedBox(height: context.mHeight * 0.01),
+              const SizedBox(height: 7),
               Text(
                 translate(
                     context, 'setting_a_estimated_price_helps_line_skipper'),
@@ -101,9 +101,9 @@ class OrderListView extends StatelessWidget {
                       color: LineItUpColorTheme().grey,
                     ),
               ),
-              SizedBox(height: context.mHeight * 0.01),
+              const SizedBox(height: 7),
               _buildPriceChipSelector(),
-              SizedBox(height: context.mHeight * 0.02),
+              const SizedBox(height: 14),
               Text(
                 translate(context, 'payment_method'),
                 style: LineItUpTextTheme().body.copyWith(
@@ -111,7 +111,7 @@ class OrderListView extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
               ),
-              SizedBox(height: context.mHeight * 0.01),
+              const SizedBox(height: 7),
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(16),
@@ -125,7 +125,7 @@ class OrderListView extends StatelessWidget {
                       LineItUpIcons().add,
                       color: LineItUpColorTheme().black,
                     ),
-                    SizedBox(width: context.mWidth * 0.02),
+                    const SizedBox(height: 14),
                     Text(
                       translate(context, 'add_a_payment_method'),
                       style: LineItUpTextTheme().body.copyWith(
@@ -136,7 +136,7 @@ class OrderListView extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(height: context.mHeight * 0.02),
+              const SizedBox(height: 14),
               Text(
                 translate(context, 'tip_for_rider'),
                 style: LineItUpTextTheme().body.copyWith(
@@ -153,9 +153,9 @@ class OrderListView extends StatelessWidget {
                       color: LineItUpColorTheme().grey,
                     ),
               ),
-              SizedBox(height: context.mHeight * 0.01),
+              const SizedBox(height: 7),
               _buildTipChipSelector(),
-              SizedBox(height: context.mHeight * 0.1),
+              SizedBox(height: context.mHeight * 0.12),
               SizedBox(
                 width: double.infinity,
                 child: CustomElevatedButton(

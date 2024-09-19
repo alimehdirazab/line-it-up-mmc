@@ -51,5 +51,9 @@ class LineItUpIcons {
 
   IconData get share => Icons.share;
 
+  IconData get user => Icons.account_circle_outlined;
+
+  IconData get lineSkipperCross => Icons.hourglass_disabled_sharp;
+
 //no delivery icon
 }

@@ -26,7 +26,7 @@ class PaymentSuccessView extends StatelessWidget {
               children: [
                 TextButton(
                   onPressed: () {
-                    context.pushAndRemoveUntilPage(const HomePage());
+                    context.pushAndRemoveUntilPage(const RootPage());
                   },
                   child: Text(
                     'Done',

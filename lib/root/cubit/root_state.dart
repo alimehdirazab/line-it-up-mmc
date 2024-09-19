@@ -1,18 +1,18 @@
-part of 'home_cubit.dart';
+part of 'root_cubit.dart';
 
 enum NavBarItem { home, delivery, lineskipper, orders, profile }
 
-class HomeState extends Equatable {
-  const HomeState({
+class RootState extends Equatable {
+  const RootState({
     this.navBarItem = NavBarItem.lineskipper,
   });
 
   final NavBarItem navBarItem;
 
-  HomeState copyWith({
+  RootState copyWith({
     NavBarItem? navBarItem,
   }) =>
-      HomeState(
+      RootState(
         navBarItem: navBarItem ?? this.navBarItem,
       );
 

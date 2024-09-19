@@ -36,7 +36,7 @@ class _OtpViewState extends State<OtpView> {
                   onPressed: () => context.popPage(),
                 ),
                 Image.asset(LineItUpImages.appogo,
-                    height: context.mHeight * 0.2),
+                    height: context.mHeight * 0.15),
                 IconButton(
                     icon: Icon(LineItUpIcons().cross,
                         color: LineItUpColorTheme().black),
@@ -45,6 +45,38 @@ class _OtpViewState extends State<OtpView> {
                     }),
               ],
             ),
+            BlocBuilder<SignUPCubit, SignUpState>(builder: (context, state) {
+              return state.userType == 0
+                  ? Row(
+                      children: [
+                        Icon(LineItUpIcons().user, size: 16),
+                        const SizedBox(width: 5),
+                        Text(
+                          translate(context, 'user'),
+                          style: LineItUpTextTheme().body.copyWith(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                                color: LineItUpColorTheme().primary,
+                              ),
+                        ),
+                      ],
+                    )
+                  : Row(
+                      children: [
+                        Icon(LineItUpIcons().lineSkipperCross, size: 16),
+                        const SizedBox(width: 5),
+                        Text(
+                          translate(context, 'line_skipper'),
+                          style: LineItUpTextTheme().body.copyWith(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                                color: LineItUpColorTheme().primary,
+                              ),
+                        ),
+                      ],
+                    );
+            }),
+            const SizedBox(height: 10),
             Text(
               translate(context, 'enter_otp'),
               style: LineItUpTextTheme().heading,
@@ -80,7 +112,13 @@ class _OtpViewState extends State<OtpView> {
               width: double.infinity,
               child: CustomElevatedButton(
                 title: translate(context, 'continue'),
-                onTap: () => context.pushPage(const CreatePasswordPage()),
+                onTap: () {
+                  // Navigate to the OTP page with the SignInCubit instance
+                  context.pushPage(BlocProvider.value(
+                    value: context.read<SignUPCubit>(),
+                    child: const CreatePasswordPage(),
+                  ));
+                },
               ),
             ),
           ],

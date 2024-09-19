@@ -91,5 +91,6 @@
     "total_amount": "Total Amount",
     "pay_now": "Pay now",
     "to": "To",
-    "oreder_id": "Oreder Id"
+    "oreder_id": "Oreder Id",
+    "user": "User"
 }

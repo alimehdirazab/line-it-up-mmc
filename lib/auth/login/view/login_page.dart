@@ -5,12 +5,37 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const LoginPageView();
+    return BlocProvider(
+      create: (context) => LoginCubit(),
+      child: const LoginPageView(),
+    );
   }
 }
 
-class LoginPageView extends StatelessWidget {
+class LoginPageView extends StatefulWidget {
   const LoginPageView({super.key});
+
+  @override
+  State<LoginPageView> createState() => _LoginPageViewState();
+}
+
+class _LoginPageViewState extends State<LoginPageView>
+    with SingleTickerProviderStateMixin {
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 2, vsync: this);
+
+    // Listen for tab changes and update the cubit state
+    _tabController.addListener(() {
+      if (!_tabController.indexIsChanging) {
+        // Update the cubit with the selected tab index
+        context.read<LoginCubit>().changeTab(_tabController.index);
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +54,7 @@ class LoginPageView extends StatelessWidget {
                   onPressed: () => context.popPage(),
                 ),
                 Image.asset(LineItUpImages.appogo,
-                    height: context.mHeight * 0.2),
+                    height: context.mHeight * 0.17),
                 IconButton(
                     icon: Icon(LineItUpIcons().cross,
                         color: LineItUpColorTheme().black),
@@ -38,6 +63,45 @@ class LoginPageView extends StatelessWidget {
                     }),
               ],
             ),
+            // Using BlocBuilder to listen for tab changes from the cubit
+            BlocBuilder<LoginCubit, LoginState>(
+              builder: (context, state) {
+                return TabBar(
+                  isScrollable: true,
+                  controller: _tabController,
+                  indicatorColor: LineItUpColorTheme().primary,
+                  labelColor: LineItUpColorTheme().primary,
+                  unselectedLabelColor: LineItUpColorTheme().black,
+                  dividerColor: LineItUpColorTheme().grey20,
+                  indicatorSize: TabBarIndicatorSize
+                      .label, // Indicator takes space of content
+                  indicatorWeight: 4, // Indicator weight
+                  dividerHeight: 4,
+                  tabAlignment: TabAlignment.start,
+                  tabs: [
+                    Tab(
+                      child: Row(
+                        children: [
+                          Icon(LineItUpIcons().user),
+                          const SizedBox(width: 5),
+                          Text(translate(context, 'user')),
+                        ],
+                      ),
+                    ),
+                    Tab(
+                      child: Row(
+                        children: [
+                          Icon(LineItUpIcons().lineSkipperCross),
+                          const SizedBox(width: 5),
+                          Text(translate(context, 'line_skipper')),
+                        ],
+                      ),
+                    ),
+                  ],
+                );
+              },
+            ),
+            SizedBox(height: context.mHeight * 0.02),
             Text(
               translate(context, 'enter_email_address'),
               style: LineItUpTextTheme().heading,
@@ -92,7 +156,14 @@ class LoginPageView extends StatelessWidget {
               width: double.infinity,
               child: CustomElevatedButton(
                 title: translate(context, 'continue'),
-                onTap: () => context.pushPage(const EnterPasswordPage()),
+                onTap: () {
+                  // Navigate to the OTP page with the SignInCubit instance
+
+                  context.pushPage(BlocProvider.value(
+                    value: context.read<LoginCubit>(),
+                    child: const EnterPasswordPage(),
+                  ));
+                },
               ),
             ),
           ],

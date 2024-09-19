@@ -29,7 +29,7 @@ class EnterNameView extends StatelessWidget {
                   onPressed: () => context.popPage(),
                 ),
                 Image.asset(LineItUpImages.appogo,
-                    height: context.mHeight * 0.2),
+                    height: context.mHeight * 0.15),
                 IconButton(
                     icon: Icon(LineItUpIcons().cross,
                         color: LineItUpColorTheme().black),
@@ -38,6 +38,38 @@ class EnterNameView extends StatelessWidget {
                     }),
               ],
             ),
+            BlocBuilder<SignUPCubit, SignUpState>(builder: (context, state) {
+              return state.userType == 0
+                  ? Row(
+                      children: [
+                        Icon(LineItUpIcons().user, size: 16),
+                        const SizedBox(width: 5),
+                        Text(
+                          translate(context, 'user'),
+                          style: LineItUpTextTheme().body.copyWith(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                                color: LineItUpColorTheme().primary,
+                              ),
+                        ),
+                      ],
+                    )
+                  : Row(
+                      children: [
+                        Icon(LineItUpIcons().lineSkipperCross, size: 16),
+                        const SizedBox(width: 5),
+                        Text(
+                          translate(context, 'line_skipper'),
+                          style: LineItUpTextTheme().body.copyWith(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                                color: LineItUpColorTheme().primary,
+                              ),
+                        ),
+                      ],
+                    );
+            }),
+            const SizedBox(height: 10),
             Text(
               translate(context, 'whats_your_name'),
               style: LineItUpTextTheme().heading,
@@ -59,7 +91,13 @@ class EnterNameView extends StatelessWidget {
               width: double.infinity,
               child: CustomElevatedButton(
                 title: translate(context, 'continue'),
-                onTap: () => context.pushPage(const EnterPhonePage()),
+                onTap: () {
+                  // Navigate to the OTP page with the SignInCubit instance
+                  context.pushPage(BlocProvider.value(
+                    value: context.read<SignUPCubit>(),
+                    child: const EnterPhonePage(),
+                  ));
+                },
               ),
             ),
           ],

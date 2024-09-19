@@ -29,7 +29,7 @@ class EnterPasswordView extends StatelessWidget {
                   onPressed: () => context.popPage(),
                 ),
                 Image.asset(LineItUpImages.appogo,
-                    height: context.mHeight * 0.2),
+                    height: context.mHeight * 0.17),
                 IconButton(
                     icon: Icon(LineItUpIcons().cross,
                         color: LineItUpColorTheme().black),
@@ -38,6 +38,38 @@ class EnterPasswordView extends StatelessWidget {
                     }),
               ],
             ),
+            BlocBuilder<LoginCubit, LoginState>(builder: (context, state) {
+              return state.userType == 0
+                  ? Row(
+                      children: [
+                        Icon(LineItUpIcons().user, size: 16),
+                        const SizedBox(width: 5),
+                        Text(
+                          translate(context, 'user'),
+                          style: LineItUpTextTheme().body.copyWith(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                                color: LineItUpColorTheme().primary,
+                              ),
+                        ),
+                      ],
+                    )
+                  : Row(
+                      children: [
+                        Icon(LineItUpIcons().lineSkipperCross, size: 16),
+                        const SizedBox(width: 5),
+                        Text(
+                          translate(context, 'line_skipper'),
+                          style: LineItUpTextTheme().body.copyWith(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                                color: LineItUpColorTheme().primary,
+                              ),
+                        ),
+                      ],
+                    );
+            }),
+            const SizedBox(height: 10),
             Text(
               translate(context, 'enter_password'),
               style: LineItUpTextTheme().heading,
@@ -76,7 +108,7 @@ class EnterPasswordView extends StatelessWidget {
               child: CustomElevatedButton(
                   title: translate(context, 'login'),
                   onTap: () {
-                    context.pushPage(const HomePage());
+                    context.pushPage(const RootPage());
                   }),
             ),
           ],

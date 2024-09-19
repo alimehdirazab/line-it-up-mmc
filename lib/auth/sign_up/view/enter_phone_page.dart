@@ -36,7 +36,7 @@ class _EnterPhoneViewState extends State<EnterPhoneView> {
                   onPressed: () => context.popPage(),
                 ),
                 Image.asset(LineItUpImages.appogo,
-                    height: context.mHeight * 0.2),
+                    height: context.mHeight * 0.15),
                 IconButton(
                     icon: Icon(LineItUpIcons().cross,
                         color: LineItUpColorTheme().black),
@@ -45,6 +45,38 @@ class _EnterPhoneViewState extends State<EnterPhoneView> {
                     }),
               ],
             ),
+            BlocBuilder<SignUPCubit, SignUpState>(builder: (context, state) {
+              return state.userType == 0
+                  ? Row(
+                      children: [
+                        Icon(LineItUpIcons().user, size: 16),
+                        const SizedBox(width: 5),
+                        Text(
+                          translate(context, 'user'),
+                          style: LineItUpTextTheme().body.copyWith(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                                color: LineItUpColorTheme().primary,
+                              ),
+                        ),
+                      ],
+                    )
+                  : Row(
+                      children: [
+                        Icon(LineItUpIcons().lineSkipperCross, size: 16),
+                        const SizedBox(width: 5),
+                        Text(
+                          translate(context, 'line_skipper'),
+                          style: LineItUpTextTheme().body.copyWith(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                                color: LineItUpColorTheme().primary,
+                              ),
+                        ),
+                      ],
+                    );
+            }),
+            const SizedBox(height: 10),
             Text(
               translate(context, 'enter_your_phone_number'),
               style: LineItUpTextTheme().heading,
@@ -87,7 +119,9 @@ class _EnterPhoneViewState extends State<EnterPhoneView> {
               width: double.infinity,
               child: CustomElevatedButton(
                 title: translate(context, 'almost_there'),
-                onTap: () => context.pushPage(const EnterPhonePage()),
+                onTap: () {
+                  context.pushPage(const LineSkipperRootPage());
+                },
               ),
             ),
           ],

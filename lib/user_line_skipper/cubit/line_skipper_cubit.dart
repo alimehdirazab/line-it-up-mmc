@@ -15,4 +15,10 @@ class LineSkipperCubit extends Cubit<LineSkipperState> {
   void selectTipChip(int selectedTipChipIndex) {
     emit(state.copyWith(selectedTipChipIndex: selectedTipChipIndex));
   }
+
+  // Method to select a category
+  void selectCategory(int selectedCategoryIndex) {
+    emit(state.copyWith(
+        selectedCategory: Catergory.values[selectedCategoryIndex]));
+  }
 }
