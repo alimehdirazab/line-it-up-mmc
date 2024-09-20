@@ -3,6 +3,8 @@ part of 'theme.dart';
 class LineItUpIcons {
   IconData get downArrow => Icons.keyboard_arrow_down_rounded;
 
+  IconData get upArrow => Icons.keyboard_arrow_up_rounded;
+
   IconData get search => Icons.search_outlined;
 
   IconData get location => Icons.pin_drop_outlined;
@@ -54,6 +56,8 @@ class LineItUpIcons {
   IconData get user => Icons.account_circle_outlined;
 
   IconData get lineSkipperCross => Icons.hourglass_disabled_sharp;
+
+  IconData get turnRight => Icons.turn_right;
 
 //no delivery icon
 }

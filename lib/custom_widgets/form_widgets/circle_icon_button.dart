@@ -1,4 +1,4 @@
-part of 'widgets.dart';
+part of '../../user_line_skipper/widgets/widgets.dart';
 
 class CircleIconButton extends StatelessWidget {
   final IconData? icon;

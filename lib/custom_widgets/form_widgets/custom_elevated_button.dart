@@ -19,6 +19,7 @@ class CustomElevatedButton extends StatelessWidget {
     this.onTap,
     this.borderWidth,
     this.borderColor,
+    this.fontWeight,
   });
 
   final String title;
@@ -37,6 +38,7 @@ class CustomElevatedButton extends StatelessWidget {
   final VoidCallback? onTap;
   final double? borderWidth;
   final Color? borderColor;
+  final FontWeight? fontWeight;
 
   @override
   Widget build(BuildContext context) {
@@ -78,6 +80,7 @@ class CustomElevatedButton extends StatelessWidget {
                   style: LineItUpTextTheme().body.copyWith(
                         color: fontColor ?? LineItUpColorTheme().white,
                         fontSize: fontSize ?? 16,
+                        fontWeight: fontWeight ?? FontWeight.w500,
                       ),
                   textAlign: TextAlign.center,
                 ),

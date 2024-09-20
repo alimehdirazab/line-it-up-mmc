@@ -21,9 +21,9 @@ class LineSkipperHomeView extends StatelessWidget {
             alignment: Alignment.bottomRight,
             children: [
               Container(
-                width: double.infinity,
-                height: context.mHeight * 0.37,
-                padding: const EdgeInsets.only(left: 10, right: 10, top: 50),
+                // width: double.infinity,
+                // height: context.mHeight * 0.37,
+                padding: const EdgeInsets.only(left: 12, right: 12, top: 48),
                 decoration: BoxDecoration(
                   color: LineItUpColorTheme().cGreen,
                 ),
@@ -32,97 +32,128 @@ class LineSkipperHomeView extends StatelessWidget {
                   children: [
                     _statusCard(context),
                     const SizedBox(height: 55),
-                    Text(
-                      'Alex William',
-                      style: LineItUpTextTheme().body.copyWith(
-                          fontWeight: FontWeight.w700,
-                          color: LineItUpColorTheme().white),
-                    ),
-                    const SizedBox(height: 20),
-                    Text(
-                      'Monthly Earning',
-                      style: LineItUpTextTheme().body.copyWith(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w300,
-                          color: LineItUpColorTheme().white),
-                    ),
-                    const SizedBox(height: 5),
-                    Text(
-                      '\$1,000.43',
-                      style: LineItUpTextTheme().body.copyWith(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w700,
-                          color: LineItUpColorTheme().white),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          children: [
+                            Text(
+                              'Alex William',
+                              style: LineItUpTextTheme().body.copyWith(
+                                  fontWeight: FontWeight.w700,
+                                  color: LineItUpColorTheme().white),
+                            ),
+                            const SizedBox(height: 20),
+                            Text(
+                              'Monthly Earning',
+                              style: LineItUpTextTheme().body.copyWith(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w300,
+                                  color: LineItUpColorTheme().white),
+                            ),
+                            const SizedBox(height: 5),
+                            Text(
+                              '\$1,000.43',
+                              style: LineItUpTextTheme().body.copyWith(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w700,
+                                  color: LineItUpColorTheme().white),
+                            ),
+                          ],
+                        ),
+                        Image.asset(
+                          LineItUpImages.lineSkipper,
+                          // width: 136,
+                          // height: 143,
+                        ),
+                      ],
                     ),
                   ],
                 ),
               ),
-              Image.asset(
-                LineItUpImages.lineSkipper,
-                width: 136,
-                height: 143,
-              ),
             ],
           ),
-          SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 5),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('Daily Stats', style: LineItUpTextTheme().body),
-                      Text(
-                        'Monday, Sept 16',
-                        style: LineItUpTextTheme().body.copyWith(
-                            fontSize: 10, fontWeight: FontWeight.w500),
-                      )
-                    ],
-                  ),
-                  const SizedBox(height: 5),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      _dailyStateBox(
-                        context: context,
-                        title: 'Earnings',
-                        value: '\$100',
+          Flexible(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 17, vertical: 17),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(height: 16),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(translate(context, 'daily_stats'),
+                            style: LineItUpTextTheme().body.copyWith(
+                                  fontWeight: FontWeight.w600,
+                                )),
+                        Text(
+                          'Monday, Sept 16',
+                          style: LineItUpTextTheme().body.copyWith(
+                              fontSize: 10, fontWeight: FontWeight.w500),
+                        )
+                      ],
+                    ),
+                    const SizedBox(height: 8),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          _dailyStateBox(
+                            context: context,
+                            title: translate(context, 'earnings'),
+                            value: '\$1000',
+                          ),
+                          const SizedBox(width: 8),
+                          _dailyStateBox(
+                            context: context,
+                            title: translate(context, 'hours_work'),
+                            value: '6 hr',
+                          ),
+                          const SizedBox(width: 8),
+                          _dailyStateBox(
+                            context: context,
+                            title: translate(context, 'orders'),
+                            value: '6',
+                          ),
+                          const SizedBox(width: 8),
+                          _dailyStateBox(
+                            context: context,
+                            title: translate(context, 'tips'),
+                            value: '\$15',
+                          ),
+                        ],
                       ),
-                      _dailyStateBox(
-                        context: context,
-                        title: 'Hours Work',
-                        value: '6 hr',
-                      ),
-                      _dailyStateBox(
-                        context: context,
-                        title: 'Orders',
-                        value: '6',
-                      ),
-                      _dailyStateBox(
-                        context: context,
-                        title: 'Tips',
-                        value: '\$15',
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 10),
-                  Text(
-                    'Active Order',
-                    style: LineItUpTextTheme()
-                        .body
-                        .copyWith(fontWeight: FontWeight.w600),
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  Container()
-                ],
+                    ),
+                    const SizedBox(height: 24),
+                    Text(
+                      translate(context, 'active_order'),
+                      style: LineItUpTextTheme()
+                          .body
+                          .copyWith(fontWeight: FontWeight.w600),
+                    ),
+                    const SizedBox(height: 8),
+                    const OrderCard(
+                      storeName: 'Food for Health',
+                      storeAddress: 'ABCD Street, California',
+                      distance: 1.5,
+                      estimatedCost: 15.87,
+                      orders: [
+                        'Arizona Drinks - 22 Oz',
+                        'Guerrero Riquisima Flour Tortillas',
+                        'Cranberry Juice - 3 Liter',
+                      ],
+                      viewOrderButton: true,
+                      showMap: true,
+                    ),
+                  ],
+                ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );
@@ -143,12 +174,12 @@ class LineSkipperHomeView extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Text('Status:',
+                  Text(translate(context, 'status'),
                       style: LineItUpTextTheme().body.copyWith(
                             fontWeight: FontWeight.w600,
                           )),
                   const SizedBox(width: 5),
-                  Text('Online',
+                  Text(translate(context, 'online'),
                       style: LineItUpTextTheme().body.copyWith(
                             color: LineItUpColorTheme().green,
                             fontWeight: FontWeight.w600,
@@ -158,7 +189,8 @@ class LineSkipperHomeView extends StatelessWidget {
               const SizedBox(height: 5),
               Flexible(
                 child: Text(
-                  'Switch off button to disable your status',
+                  translate(
+                      context, 'switch_off_button_to_disable_your_status'),
                   style: LineItUpTextTheme().body.copyWith(
                         fontSize: 12,
                         fontWeight: FontWeight.w400,
@@ -193,7 +225,7 @@ class LineSkipperHomeView extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Container(
-          width: context.mWidth / 4.5,
+          width: context.mWidth / 4,
           height: 83,
           decoration: BoxDecoration(
               color: LineItUpColorTheme().grey20,
@@ -213,7 +245,7 @@ class LineSkipperHomeView extends StatelessWidget {
           style: LineItUpTextTheme().body.copyWith(
                 fontSize: 12,
               ),
-        )
+        ),
       ],
     );
   }

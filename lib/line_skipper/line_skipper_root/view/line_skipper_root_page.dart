@@ -37,8 +37,8 @@ class _LineSkipperRootViewPages extends StatelessWidget {
           index: _buildPageIndex(state),
           children: const [
             LineSkipperHomePage(),
-            Placeholder(),
-            Placeholder(),
+            LineSkipperOrderPage(),
+            LineSkipperProfilePage(),
           ],
         );
       },
