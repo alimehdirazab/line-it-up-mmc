@@ -18,7 +18,9 @@ class ConfirmLoactionView extends StatelessWidget {
       appBar: AppBar(
         title: Text(
           translate(context, 'confirm_location'),
-          style: LineItUpTextTheme().body,
+          style: LineItUpTextTheme().body.copyWith(
+                fontWeight: FontWeight.w600,
+              ),
         ),
         centerTitle: true,
       ),
@@ -36,7 +38,7 @@ class ConfirmLoactionView extends StatelessWidget {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              padding: EdgeInsets.all(context.mWidth * 0.05),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
               width: double.infinity,
               height: context.mHeight * 0.40,
               decoration: BoxDecoration(
@@ -53,21 +55,21 @@ class ConfirmLoactionView extends StatelessWidget {
                       style: LineItUpTextTheme()
                           .body
                           .copyWith(fontSize: 16, fontWeight: FontWeight.w600)),
-                  const SizedBox(height: 17),
+                  const SizedBox(height: 16),
                   GeneralTile(
                     icon: LineItUpIcons().location,
                     title: translate(context, 'ordering_from'),
                     subtitle: '12348 street, LA',
                     trailing: LineItUpIcons().edit,
                   ),
-                  const SizedBox(height: 15),
+                  const SizedBox(height: 12),
                   GeneralTile(
                     icon: LineItUpIcons().phone,
                     title: translate(context, 'receiver_contact'),
                     subtitle: '080803280208',
                     trailing: LineItUpIcons().edit,
                   ),
-                  const SizedBox(height: 15),
+                  const SizedBox(height: 24),
                   SizedBox(
                     width: double.infinity,
                     child: CustomElevatedButton(

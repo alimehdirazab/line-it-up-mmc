@@ -113,7 +113,9 @@ class _LineSkipperOrderViewState extends State<LineSkipperOrderView>
               context.pushPage(const LineSkipperOrderAcceptedPage());
             },
             rejectOrderButton: true,
-            onRejectOrderTap: () {},
+            onRejectOrderTap: () {
+              context.pushPage(const LineSkipperRejectOrderPage());
+            },
           ),
         ],
       ),

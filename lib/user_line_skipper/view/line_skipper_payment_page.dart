@@ -19,10 +19,10 @@ class LineSkipperPaymentView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.only(
-          top: context.mHeight * 0.05,
-          left: context.mWidth * 0.03,
-          right: context.mWidth * 0.03,
+        padding: const EdgeInsets.only(
+          top: 45,
+          left: 18,
+          right: 18,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,8 +40,9 @@ class LineSkipperPaymentView extends StatelessWidget {
                     style: LineItUpTextTheme().body),
               ],
             ),
+            const SizedBox(height: 16),
             const Divider(),
-            SizedBox(height: context.mHeight * 0.03),
+            const SizedBox(height: 30),
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
@@ -52,27 +53,27 @@ class LineSkipperPaymentView extends StatelessWidget {
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
                             )),
-                    SizedBox(height: context.mHeight * 0.01),
+                    const SizedBox(height: 8),
                     Text('Sam Karen',
                         style: LineItUpTextTheme().body.copyWith(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
                               color: LineItUpColorTheme().grey,
                             )),
-                    SizedBox(height: context.mHeight * 0.03),
+                    const SizedBox(height: 24),
                     Text(translate(context, 'queue_time'),
                         style: LineItUpTextTheme().body.copyWith(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
                             )),
-                    SizedBox(height: context.mHeight * 0.01),
+                    const SizedBox(height: 8),
                     Text('10:05 min',
                         style: LineItUpTextTheme().body.copyWith(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
                               color: LineItUpColorTheme().grey,
                             )),
-                    SizedBox(height: context.mHeight * 0.03),
+                    const SizedBox(height: 24),
                     Row(
                       children: [
                         Text(translate(context, 'waiting_price'),
@@ -87,48 +88,48 @@ class LineSkipperPaymentView extends StatelessWidget {
                                 )),
                       ],
                     ),
-                    SizedBox(height: context.mHeight * 0.01),
+                    const SizedBox(height: 8),
                     Text('\$10.5',
                         style: LineItUpTextTheme().body.copyWith(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
                               color: LineItUpColorTheme().grey,
                             )),
-                    SizedBox(height: context.mHeight * 0.03),
+                    const SizedBox(height: 24),
                     Text(translate(context, 'order_details'),
                         style: LineItUpTextTheme().body.copyWith(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
                             )),
-                    SizedBox(height: context.mHeight * 0.01),
+                    const SizedBox(height: 4),
                     Text('Cost Less Food Company',
                         style: LineItUpTextTheme().body.copyWith(
                               fontSize: 12,
                               fontWeight: FontWeight.w500,
                               color: LineItUpColorTheme().grey,
                             )),
-                    SizedBox(height: context.mHeight * 0.01),
+                    const SizedBox(height: 8),
                     Text('Arizona Drinks - 22 Oz',
                         style: LineItUpTextTheme().body.copyWith(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
                               color: LineItUpColorTheme().grey,
                             )),
-                    SizedBox(height: context.mHeight * 0.01),
+                    const SizedBox(height: 8),
                     Text('Guerrero Riquisima Flour Tortillas',
                         style: LineItUpTextTheme().body.copyWith(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
                               color: LineItUpColorTheme().grey,
                             )),
-                    SizedBox(height: context.mHeight * 0.01),
+                    const SizedBox(height: 8),
                     Text('Cranberry Juice - 3 Liter',
                         style: LineItUpTextTheme().body.copyWith(
                               fontSize: 14,
                               fontWeight: FontWeight.w400,
                               color: LineItUpColorTheme().grey,
                             )),
-                    SizedBox(height: context.mHeight * 0.03),
+                    const SizedBox(height: 24),
                     Text(
                       translate(context, 'tip_for_rider'),
                       style: LineItUpTextTheme().body.copyWith(
@@ -136,7 +137,7 @@ class LineSkipperPaymentView extends StatelessWidget {
                             fontWeight: FontWeight.w600,
                           ),
                     ),
-                    SizedBox(height: context.mHeight * 0.01),
+                    const SizedBox(height: 4),
                     Text(
                         translate(context,
                             'your_selected_tip_go_directly_to_your_rider'),
@@ -145,19 +146,19 @@ class LineSkipperPaymentView extends StatelessWidget {
                               fontWeight: FontWeight.w400,
                               color: LineItUpColorTheme().grey,
                             )),
-                    SizedBox(height: context.mHeight * 0.01),
+                    const SizedBox(height: 8),
                     _buildTipChipSelector(),
-                    SizedBox(height: context.mHeight * 0.03),
+                    const SizedBox(height: 24),
                     Text(translate(context, 'payment_method'),
                         style: LineItUpTextTheme().body.copyWith(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
                             )),
-                    SizedBox(height: context.mHeight * 0.01),
+                    const SizedBox(height: 8),
                     Row(
                       children: [
                         Image.asset(LineItUpImages.masterCard),
-                        SizedBox(width: context.mWidth * 0.02),
+                        const SizedBox(height: 10),
                         Text('Master card',
                             style: LineItUpTextTheme().body.copyWith(
                                   fontSize: 14,
@@ -166,15 +167,15 @@ class LineSkipperPaymentView extends StatelessWidget {
                                 )),
                       ],
                     ),
-                    SizedBox(height: context.mHeight * 0.03),
+                    const SizedBox(height: 24),
                     const Divider(),
-                    SizedBox(height: context.mHeight * 0.03),
+                    const SizedBox(height: 24),
                     Text(translate(context, 'total_amount'),
                         style: LineItUpTextTheme().body.copyWith(
                               fontSize: 14,
                               fontWeight: FontWeight.w600,
                             )),
-                    SizedBox(height: context.mHeight * 0.01),
+                    const SizedBox(height: 8),
                     Text('\$15.5',
                         style: LineItUpTextTheme().body.copyWith(
                               fontSize: 14,
@@ -187,9 +188,9 @@ class LineSkipperPaymentView extends StatelessWidget {
             ),
             Container(
               width: double.infinity,
-              padding: EdgeInsets.symmetric(
-                vertical: context.mHeight * 0.02,
-                horizontal: context.mWidth * 0.02,
+              padding: const EdgeInsets.symmetric(
+                vertical: 18,
+                horizontal: 12,
               ),
               color: LineItUpColorTheme().white,
               child: SizedBox(
@@ -197,7 +198,7 @@ class LineSkipperPaymentView extends StatelessWidget {
                 child: CustomElevatedButton(
                   title: translate(context, 'pay_now'),
                   onTap: () {
-                    context.pushPage(const PaymentSuccessView());
+                    context.pushPage(const PaymentSuccessPage());
                   },
                 ),
               ),
@@ -218,22 +219,22 @@ class LineSkipperPaymentView extends StatelessWidget {
             children: [
               _buildChip(
                   context, '\$5', 0, state.selectedTipChipIndex == 0, false),
-              const SizedBox(width: 10),
+              const SizedBox(width: 8),
               _buildChip(
                   context, '\$10', 1, state.selectedTipChipIndex == 1, false),
-              const SizedBox(width: 10),
+              const SizedBox(width: 8),
               _buildChip(
                   context, '\$12', 2, state.selectedTipChipIndex == 2, false),
-              const SizedBox(width: 10),
+              const SizedBox(width: 8),
               _buildChip(
                   context, '\$15', 3, state.selectedTipChipIndex == 3, false),
-              const SizedBox(width: 10),
+              const SizedBox(width: 8),
               _buildChip(
                   context, '\$20', 4, state.selectedTipChipIndex == 4, false),
-              const SizedBox(width: 10),
+              const SizedBox(width: 8),
               _buildChip(
                   context, '\$100', 5, state.selectedTipChipIndex == 5, false),
-              const SizedBox(width: 10),
+              const SizedBox(width: 8),
               _buildChip(
                   context, '\$150', 6, state.selectedTipChipIndex == 6, false),
             ],

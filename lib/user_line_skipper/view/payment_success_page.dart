@@ -17,8 +17,9 @@ class PaymentSuccessView extends StatelessWidget {
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(
-            vertical: context.mHeight * 0.05,
-            horizontal: context.mWidth * 0.04),
+          vertical: context.mHeight * 0.05,
+          horizontal: 16,
+        ),
         child: Column(
           children: [
             Row(
@@ -39,7 +40,7 @@ class PaymentSuccessView extends StatelessWidget {
             ),
             SizedBox(height: context.mHeight * 0.1),
             Image.asset(LineItUpImages.checkVerified),
-            const SizedBox(height: 10),
+            const SizedBox(height: 16),
             Text(
               'Payment Successful',
               style: LineItUpTextTheme().body.copyWith(
@@ -47,7 +48,7 @@ class PaymentSuccessView extends StatelessWidget {
                     fontWeight: FontWeight.w500,
                   ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 16),
             Text(
               '\$15.5',
               style: LineItUpTextTheme().body.copyWith(
@@ -56,12 +57,10 @@ class PaymentSuccessView extends StatelessWidget {
                   ),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: context.mHeight * 0.1),
+            const SizedBox(height: 40),
             Container(
               width: double.infinity,
-              padding: EdgeInsets.symmetric(
-                  vertical: context.mHeight * 0.02,
-                  horizontal: context.mWidth * 0.02),
+              padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 color: LineItUpColorTheme().grey20,
                 borderRadius: BorderRadius.circular(10),
@@ -69,11 +68,11 @@ class PaymentSuccessView extends StatelessWidget {
               child: Column(
                 children: [
                   _buildTextData(context, 'to', 'Sam Karen'),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 12),
                   _buildTextData(context, 'queue_time', '10:05 min'),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 12),
                   _buildTextData(context, 'order_id', '12345849'),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: 12),
                   _buildTextData(context, 'payment_method', 'Master Card'),
                 ],
               ),

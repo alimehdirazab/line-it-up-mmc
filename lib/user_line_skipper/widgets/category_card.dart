@@ -13,28 +13,25 @@ class CategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(5),
-      child: Container(
-        padding: const EdgeInsets.fromLTRB(16, 16, 16, 16),
-        decoration: BoxDecoration(
-          color: isSelected
-              ? LineItUpColorTheme().grey10
-              : LineItUpColorTheme().white,
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Column(
-          children: [
-            Image.asset(categoryImage, width: 40, height: 40),
-            const SizedBox(height: 8),
-            Text(
-              categoryText,
-              style: LineItUpTextTheme().body.copyWith(
-                    fontSize: 12,
-                  ),
-            ),
-          ],
-        ),
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      decoration: BoxDecoration(
+        color: isSelected
+            ? LineItUpColorTheme().grey10
+            : LineItUpColorTheme().white,
+        borderRadius: BorderRadius.circular(4),
+      ),
+      child: Column(
+        children: [
+          Image.asset(categoryImage),
+          const SizedBox(height: 2),
+          Text(
+            categoryText,
+            style: LineItUpTextTheme()
+                .body
+                .copyWith(fontSize: 12, fontWeight: FontWeight.w600),
+          ),
+        ],
       ),
     );
   }

@@ -9,6 +9,7 @@ import 'package:line_it_up/line_skipper/line_skipper_root/view/view.dart';
 
 import 'package:line_it_up/onboarding/onboarding.dart';
 import 'package:country_code_picker/country_code_picker.dart';
+import 'package:line_it_up/root/view/view.dart';
 
 import '../../../utils/utils.dart';
 

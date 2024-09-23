@@ -16,3 +16,5 @@ part 'line_skipper_order_accepted_page.dart';
 part 'line_skipper_waiting_in_queue_page.dart';
 part 'line_skipper_qr_page.dart';
 part 'line_skipper_order_completed_page.dart';
+part 'line_skipper_reject_order_page.dart';
+part 'line_skipper_confirm_rejection.dart';

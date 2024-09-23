@@ -133,5 +133,22 @@
     "statistics": "Statistics",
     "get_your_overall_performance_stats": "Get your overall performance stats",
     "learn_about_privacy_and_account": "Learn about privacy and account",
-    "push_notification": "Push notification"
+    "push_notification": "Push notification",
+    "search": "Search",
+    "Please_select_the_reason": "Please select the reason",
+    "select_the_reason_why_are_you_rejecting_the_order": "Select the reason why are you rejecting the order",
+    "I_dont_have_enough_amount_to_pay_on_shop": "I don’t have enough amount to pay on shop",
+    "the_order_size_is_too_large_to_carry_safely": "The order size is too large to carry safely",
+    "my_vehicle_is_not_functioning_properly": "My vehicle is not functioning properly",
+    "the_order_details_are_unclear_or_incomplete": "The order details are unclear or incomplete",
+    "there_is_heavy_traffic_or_road_closures_on_the_delivery_route": "There’s heavy traffic or road closures on the delivery route",
+    "weather_conditions_make_it_unsafe_for_delivery": "Weather conditions make it unsafe for delivery",
+    "i_am_not_feeling_well_and_cannot_proceed_with_the_delivery": "I am not feeling well and cannot proceed with the delivery",
+    "next": "Next",
+    "cancelling_order": "Cancelling order",
+    "you_cannot_reject_multiple_request_at_the_same_day_it_will_impact_your_profile": "You cannot reject multiple request at the same day,it will impact your profile.",
+    "where_to_go": "Where to go",
+    "distance": "Distance",
+    "none": "None",
+    "i_have_changed_my_mind_accept_it": "I’ve changed my mind, accept it!"
 }

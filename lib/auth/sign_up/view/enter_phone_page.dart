@@ -120,7 +120,9 @@ class _EnterPhoneViewState extends State<EnterPhoneView> {
               child: CustomElevatedButton(
                 title: translate(context, 'almost_there'),
                 onTap: () {
-                  context.pushPage(const LineSkipperRootPage());
+                  context.read<SignUPCubit>().state.userType == 0
+                      ? context.pushPage(const RootPage())
+                      : context.pushPage(const LineSkipperRootPage());
                 },
               ),
             ),

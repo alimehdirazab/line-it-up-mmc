@@ -23,16 +23,16 @@ class StroreCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Container(
-            width: context.mWidth * 0.3,
-            height: context.mHeight * 0.1,
+            width: 80,
+            height: 80,
             decoration: BoxDecoration(
                 border: Border.all(color: LineItUpColorTheme().grey20),
-                borderRadius: BorderRadius.circular(10)),
+                borderRadius: BorderRadius.circular(4)),
             child: Image.asset(
               image,
             ),
           ),
-          SizedBox(width: context.mWidth * 0.02),
+          const SizedBox(width: 12),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -54,7 +54,7 @@ class StroreCard extends StatelessWidget {
                   style: LineItUpTextTheme().body.copyWith(
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
-                      color: LineItUpColorTheme().black.withOpacity(0.5))),
+                      color: LineItUpColorTheme().grey)),
             ],
           )
         ],

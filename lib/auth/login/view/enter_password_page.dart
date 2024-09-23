@@ -106,10 +106,13 @@ class EnterPasswordView extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: CustomElevatedButton(
-                  title: translate(context, 'login'),
-                  onTap: () {
-                    context.pushPage(const RootPage());
-                  }),
+                title: translate(context, 'login'),
+                onTap: () {
+                  context.read<LoginCubit>().state.userType == 0
+                      ? context.pushPage(const RootPage())
+                      : context.pushPage(const LineSkipperRootPage());
+                },
+              ),
             ),
           ],
         ),

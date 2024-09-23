@@ -21,7 +21,7 @@ class OrderListView extends StatelessWidget {
       appBar: AppBar(
         actions: [
           Padding(
-            padding: EdgeInsets.only(right: context.mWidth * 0.04),
+            padding: const EdgeInsets.only(right: 17),
             child: CircleAvatar(
               backgroundColor: LineItUpColorTheme().grey,
               child: IconButton(
@@ -48,11 +48,11 @@ class OrderListView extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
               ),
-              const SizedBox(height: 7),
+              const SizedBox(height: 8),
               CustomTextField(
                 hintText: translate(context, 'list_one_product_at_a_time'),
               ),
-              const SizedBox(height: 7),
+              const SizedBox(height: 8),
               GestureDetector(
                 onTap: () {},
                 child: Row(
@@ -71,7 +71,7 @@ class OrderListView extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: 14),
+              const SizedBox(height: 24),
               Text(
                 translate(context, 'other_instruction'),
                 style: LineItUpTextTheme().body.copyWith(
@@ -79,11 +79,11 @@ class OrderListView extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
               ),
-              const SizedBox(height: 7),
+              const SizedBox(height: 8),
               CustomTextField(
                 hintText: translate(context, 'write_instructions'),
               ),
-              const SizedBox(height: 14),
+              const SizedBox(height: 24),
               Text(
                 translate(context, 'estimated_order_price'),
                 style: LineItUpTextTheme().body.copyWith(
@@ -91,7 +91,7 @@ class OrderListView extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
               ),
-              const SizedBox(height: 7),
+              const SizedBox(height: 4),
               Text(
                 translate(
                     context, 'setting_a_estimated_price_helps_line_skipper'),
@@ -101,9 +101,9 @@ class OrderListView extends StatelessWidget {
                       color: LineItUpColorTheme().grey,
                     ),
               ),
-              const SizedBox(height: 7),
+              const SizedBox(height: 8),
               _buildPriceChipSelector(),
-              const SizedBox(height: 14),
+              const SizedBox(height: 24),
               Text(
                 translate(context, 'payment_method'),
                 style: LineItUpTextTheme().body.copyWith(
@@ -111,13 +111,12 @@ class OrderListView extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
               ),
-              const SizedBox(height: 7),
+              const SizedBox(height: 8),
               Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   color: LineItUpColorTheme().grey20,
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(8),
                 ),
                 child: Row(
                   children: [
@@ -125,7 +124,7 @@ class OrderListView extends StatelessWidget {
                       LineItUpIcons().add,
                       color: LineItUpColorTheme().black,
                     ),
-                    const SizedBox(height: 14),
+                    const SizedBox(width: 4),
                     Text(
                       translate(context, 'add_a_payment_method'),
                       style: LineItUpTextTheme().body.copyWith(
@@ -136,7 +135,7 @@ class OrderListView extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: 14),
+              const SizedBox(height: 24),
               Text(
                 translate(context, 'tip_for_rider'),
                 style: LineItUpTextTheme().body.copyWith(
@@ -144,6 +143,7 @@ class OrderListView extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
               ),
+              const SizedBox(height: 4),
               Text(
                 translate(
                     context, 'your_selected_tip_go_directly_to_your_rider'),
@@ -153,9 +153,9 @@ class OrderListView extends StatelessWidget {
                       color: LineItUpColorTheme().grey,
                     ),
               ),
-              const SizedBox(height: 7),
+              const SizedBox(height: 8),
               _buildTipChipSelector(),
-              SizedBox(height: context.mHeight * 0.12),
+              const SizedBox(height: 24),
               SizedBox(
                 width: double.infinity,
                 child: CustomElevatedButton(
@@ -183,16 +183,16 @@ class OrderListView extends StatelessWidget {
             children: [
               _buildChip(context, '\$5-20', 0,
                   state.selectedPriceChipIndex == 0, true),
-              const SizedBox(width: 10),
+              const SizedBox(width: 8),
               _buildChip(context, '\$20-40', 1,
                   state.selectedPriceChipIndex == 1, true),
-              const SizedBox(width: 10),
+              const SizedBox(width: 8),
               _buildChip(context, '\$40-60', 2,
                   state.selectedPriceChipIndex == 2, true),
-              const SizedBox(width: 10),
+              const SizedBox(width: 8),
               _buildChip(context, '\$60-80', 3,
                   state.selectedPriceChipIndex == 3, true),
-              const SizedBox(width: 10),
+              const SizedBox(width: 8),
               _buildChip(context, '\$80-100', 4,
                   state.selectedPriceChipIndex == 4, true),
             ],
@@ -212,22 +212,22 @@ class OrderListView extends StatelessWidget {
             children: [
               _buildChip(
                   context, '\$5', 0, state.selectedTipChipIndex == 0, false),
-              const SizedBox(width: 10),
+              const SizedBox(width: 8),
               _buildChip(
                   context, '\$10', 1, state.selectedTipChipIndex == 1, false),
-              const SizedBox(width: 10),
+              const SizedBox(width: 8),
               _buildChip(
                   context, '\$12', 2, state.selectedTipChipIndex == 2, false),
-              const SizedBox(width: 10),
+              const SizedBox(width: 8),
               _buildChip(
                   context, '\$15', 3, state.selectedTipChipIndex == 3, false),
-              const SizedBox(width: 10),
+              const SizedBox(width: 8),
               _buildChip(
                   context, '\$20', 4, state.selectedTipChipIndex == 4, false),
-              const SizedBox(width: 10),
+              const SizedBox(width: 8),
               _buildChip(
                   context, '\$100', 5, state.selectedTipChipIndex == 5, false),
-              const SizedBox(width: 10),
+              const SizedBox(width: 8),
               _buildChip(
                   context, '\$150', 6, state.selectedTipChipIndex == 6, false),
             ],

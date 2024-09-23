@@ -20,34 +20,47 @@ class GeneralTile extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: double.infinity,
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
         decoration: BoxDecoration(
           color: LineItUpColorTheme().grey20,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(8),
         ),
-        child: ListTile(
-          leading: Icon(
-            icon,
-            color: LineItUpColorTheme().black,
-          ),
-          title: Text(
-            title,
-            style: LineItUpTextTheme().body.copyWith(
-                  fontSize: 12,
-                  color: LineItUpColorTheme().black.withOpacity(0.5),
+        child: Row(
+          children: [
+            Icon(
+              icon,
+              color: LineItUpColorTheme().black,
+              size: 24,
+            ),
+            const SizedBox(width: 10),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: LineItUpTextTheme().body.copyWith(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        color: LineItUpColorTheme().grey,
+                      ),
                 ),
-          ),
-          subtitle: Text(
-            subtitle,
-            style: LineItUpTextTheme().body.copyWith(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
+                const SizedBox(height: 4),
+                Text(
+                  subtitle,
+                  style: LineItUpTextTheme().body.copyWith(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                      ),
                 ),
-          ),
-          trailing: Icon(
-            trailing,
-            color: LineItUpColorTheme().black,
-          ),
+              ],
+            ),
+            const Spacer(),
+            Icon(
+              trailing,
+              color: LineItUpColorTheme().black,
+              size: 24,
+            ),
+          ],
         ),
       ),
     );

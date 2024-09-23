@@ -123,8 +123,7 @@ class _FindingLineSkipperPageViewState
 
   Widget _reachingBottomContainer(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(context.mWidth * 0.05),
-      width: double.infinity,
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
       height: context.mHeight * 0.40,
       decoration: BoxDecoration(
         color: LineItUpColorTheme().white,
@@ -153,13 +152,13 @@ class _FindingLineSkipperPageViewState
               ),
             ],
           ),
-          SizedBox(height: context.mHeight * 0.02),
+          const SizedBox(height: 16),
           const Divider(),
-          SizedBox(height: context.mHeight * 0.02),
+          const SizedBox(height: 16),
           Row(
             children: [
-              Image.asset(LineItUpImages.manAvatar, width: 40, height: 41),
-              SizedBox(width: context.mWidth * 0.02),
+              Image.asset(LineItUpImages.manAvatar),
+              const SizedBox(width: 8),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -178,7 +177,7 @@ class _FindingLineSkipperPageViewState
                               color: LineItUpColorTheme().grey,
                             ),
                       ),
-                      SizedBox(width: context.mWidth * 0.02),
+                      const SizedBox(width: 4.5),
                       Icon(
                         LineItUpIcons().star,
                         color: LineItUpColorTheme().yellow,
@@ -190,19 +189,20 @@ class _FindingLineSkipperPageViewState
               )
             ],
           ),
-          SizedBox(height: context.mHeight * 0.02),
+          const SizedBox(height: 12),
           Container(
-            padding: EdgeInsets.all(context.mWidth * 0.05),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
             width: double.infinity,
             decoration: BoxDecoration(
               color: LineItUpColorTheme().grey20,
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(color: LineItUpColorTheme().grey50),
             ),
             child: Row(
               children: [
                 Icon(LineItUpIcons().infomsg,
                     color: LineItUpColorTheme().black),
-                SizedBox(width: context.mWidth * 0.02),
+                const SizedBox(width: 8),
                 Flexible(
                   child: Text(
                       translate(context,
@@ -215,7 +215,7 @@ class _FindingLineSkipperPageViewState
               ],
             ),
           ),
-          SizedBox(height: context.mHeight * 0.04),
+          const SizedBox(height: 24),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -259,9 +259,8 @@ class _FindingLineSkipperPageViewState
 
   Widget _connectingBottomContainer(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(context.mWidth * 0.05),
-      width: double.infinity,
-      height: context.mHeight * 0.30,
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+      height: context.mHeight * 0.35,
       decoration: BoxDecoration(
         color: LineItUpColorTheme().white,
         borderRadius: const BorderRadius.only(
@@ -278,7 +277,7 @@ class _FindingLineSkipperPageViewState
                 .body
                 .copyWith(fontSize: 16, fontWeight: FontWeight.w600),
           ),
-          SizedBox(height: context.mHeight * 0.05),
+          const SizedBox(height: 24),
           Row(
             children: [
               Text(
@@ -288,8 +287,9 @@ class _FindingLineSkipperPageViewState
                     fontWeight: FontWeight.w400,
                     color: LineItUpColorTheme().grey),
               ),
+              const SizedBox(width: 4),
               Text(
-                ' 30 Sec',
+                '30 Sec',
                 style: LineItUpTextTheme().body.copyWith(
                       fontSize: 14,
                       fontWeight: FontWeight.bold,
@@ -298,15 +298,14 @@ class _FindingLineSkipperPageViewState
               ),
             ],
           ),
-          SizedBox(height: context.mHeight * 0.02),
-          // const TimeProgressBar(currentIndex: 3)
+          const SizedBox(height: 16),
           LinearProgressIndicator(
             value: 0.3,
             backgroundColor: LineItUpColorTheme().grey20,
             valueColor:
                 AlwaysStoppedAnimation<Color>(LineItUpColorTheme().primary),
           ),
-          SizedBox(height: context.mHeight * 0.02),
+          const SizedBox(height: 24),
           Center(
             child: GestureDetector(
               onTap: () {
@@ -314,8 +313,7 @@ class _FindingLineSkipperPageViewState
                   isReaching = true;
                 });
               },
-              child:
-                  Image.asset(LineItUpImages.manAvatar, width: 83, height: 83),
+              child: Image.asset(LineItUpImages.manAvatar1),
             ),
           ),
         ],
