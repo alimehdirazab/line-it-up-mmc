@@ -5,7 +5,10 @@ class LineSkipperRejectOrderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const LineSkipperRejectOrderView();
+    return BlocProvider(
+      create: (context) => LineSkipperOrderCubit(),
+      child: const LineSkipperRejectOrderView(),
+    );
   }
 }
 
@@ -19,8 +22,6 @@ class LineSkipperRejectOrderView extends StatefulWidget {
 
 class _LineSkipperRejectOrderViewState
     extends State<LineSkipperRejectOrderView> {
-  int _selectedReasonIndex = 0; // Track the selected radio button
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,23 +83,30 @@ class _LineSkipperRejectOrderViewState
                 divider: false,
               ),
               const SizedBox(height: 24),
-              SizedBox(
-                width: double.infinity,
-                child: CustomElevatedButton(
-                  title: translate(context, 'next'),
-                  buttonColor: _selectedReasonIndex == 0
-                      ? LineItUpColorTheme().secondary
-                      : LineItUpColorTheme().primary,
-                  onTap: () {
-                    // Use the _selectedReasonIndex for processing the selected reason
-                    if (_selectedReasonIndex != 0) {
-                      context.pushPage(const LineSkipperConfirmRejectionPage());
-                    } else {
-                      // Process the selected reason
-                    }
-                  },
-                ),
-              ),
+              BlocBuilder<LineSkipperOrderCubit, LineSkipperOrderState>(
+                  buildWhen: (previous, current) =>
+                      previous.selectedReasonIndex !=
+                      current.selectedReasonIndex,
+                  builder: (context, state) {
+                    return SizedBox(
+                      width: double.infinity,
+                      child: CustomElevatedButton(
+                        title: translate(context, 'next'),
+                        buttonColor: state.selectedReasonIndex == 0
+                            ? LineItUpColorTheme().secondary
+                            : LineItUpColorTheme().primary,
+                        onTap: () {
+                          // Use the _selectedReasonIndex for processing the selected reason
+                          if (state.selectedReasonIndex != 0) {
+                            context.pushPage(
+                                const LineSkipperConfirmRejectionPage());
+                          } else {
+                            // Process the selected reason
+                          }
+                        },
+                      ),
+                    );
+                  }),
             ],
           ),
         ),
@@ -121,16 +129,21 @@ class _LineSkipperRejectOrderViewState
                         fontWeight: FontWeight.w400,
                       )),
             ),
-            Radio(
-              value: index,
-              groupValue: _selectedReasonIndex,
-              onChanged: (value) {
-                setState(() {
-                  _selectedReasonIndex = value as int;
-                });
-              },
-              activeColor: LineItUpColorTheme().black,
-            ),
+            BlocBuilder<LineSkipperOrderCubit, LineSkipperOrderState>(
+                buildWhen: (previous, current) =>
+                    previous.selectedReasonIndex != current.selectedReasonIndex,
+                builder: (context, state) {
+                  return Radio(
+                    value: index,
+                    groupValue: state.selectedReasonIndex,
+                    onChanged: (value) {
+                      context
+                          .read<LineSkipperOrderCubit>()
+                          .selectReason(value as int);
+                    },
+                    activeColor: LineItUpColorTheme().black,
+                  );
+                }),
           ],
         ),
         const SizedBox(height: 16),

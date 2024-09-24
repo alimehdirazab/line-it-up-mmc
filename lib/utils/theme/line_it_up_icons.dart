@@ -59,5 +59,7 @@ class LineItUpIcons {
 
   IconData get turnRight => Icons.turn_right;
 
+  IconData get currencyExchange => Icons.currency_exchange;
+
 //no delivery icon
 }

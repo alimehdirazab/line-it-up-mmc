@@ -72,9 +72,12 @@ class LineSkipperProfileView extends StatelessWidget {
                     child: Column(
                       children: [
                         _profileListTile(
-                          title: translate(context, 'payment'),
-                          subtitle: translate(context, 'manage_payment_method'),
+                          title: translate(context, 'wallet'),
+                          subtitle: translate(context, 'manage_your_wallet'),
                           divider: true,
+                          onTap: () {
+                            context.pushPage(const LineSkipperWalletPage());
+                          },
                         ),
                         _profileListTile(
                           title: translate(context, 'location'),

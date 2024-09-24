@@ -11,4 +11,10 @@ class LineSkipperOrderCubit extends Cubit<LineSkipperOrderState> {
       orderType: tab,
     ));
   }
+
+  void selectReason(int index) {
+    emit(state.copyWith(
+      selectedReasonIndex: index,
+    ));
+  }
 }

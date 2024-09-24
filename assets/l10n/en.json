@@ -150,5 +150,10 @@
     "where_to_go": "Where to go",
     "distance": "Distance",
     "none": "None",
-    "i_have_changed_my_mind_accept_it": "I’ve changed my mind, accept it!"
+    "i_have_changed_my_mind_accept_it": "I’ve changed my mind, accept it!",
+    "wallet": "Wallet",
+    "manage_your_wallet": "Manage your wallet",
+    "total_earning": "Total Earning",
+    "primary_payment_method": "Primary payment method",
+    "change": "Change"
 }
