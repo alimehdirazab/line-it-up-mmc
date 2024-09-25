@@ -19,6 +19,7 @@ class CustomDropDown<T> extends StatelessWidget {
     this.errorStyle,
     this.hintText,
     this.hintStyle,
+    this.dropdownColor,
   });
 
   final List<CustomDropDownOption<T>> options;
@@ -37,6 +38,7 @@ class CustomDropDown<T> extends StatelessWidget {
   final TextStyle? errorStyle;
   final String? hintText;
   final TextStyle? hintStyle;
+  final Color? dropdownColor;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +48,7 @@ class CustomDropDown<T> extends StatelessWidget {
         style: LineItUpTextTheme().body.copyWith(fontSize: 14),
       ),
       isExpanded: false,
-      dropdownColor: LineItUpColorTheme().secondary,
+      dropdownColor: dropdownColor ?? LineItUpColorTheme().secondary,
       borderRadius: BorderRadius.circular(16),
       icon: Icon(
         Icons.expand_more,

@@ -32,7 +32,7 @@ class FindingOrderView extends StatelessWidget {
                       color: LineItUpColorTheme().black),
                   onPressed: () => Navigator.pop(context),
                 ),
-                CircleIconButton(
+                CircleButton(
                   icon: LineItUpIcons().share,
                   onPressed: () {},
                   backgroundColor: LineItUpColorTheme().grey20,
@@ -224,13 +224,13 @@ class FindingOrderView extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        CircleIconButton(
+                        CircleButton(
                           icon: LineItUpIcons().phone1,
                           onPressed: () {},
                           backgroundColor: LineItUpColorTheme().grey20,
                           radius: 25,
                         ),
-                        CircleIconButton(
+                        CircleButton(
                           icon: LineItUpIcons().message,
                           onPressed: () {},
                           backgroundColor: LineItUpColorTheme().grey20,

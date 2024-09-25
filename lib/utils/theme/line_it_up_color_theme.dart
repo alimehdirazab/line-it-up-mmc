@@ -30,6 +30,8 @@ class LineItUpColorTheme {
 
   Color get grey60 => const Color(0xFF747474);
 
+  Color get grey70 => const Color(0xFFEAEAEA);
+
   Color get black40 => const Color(0xFF22272B);
 
   Color get white => const Color(0xFFFFFFFF);

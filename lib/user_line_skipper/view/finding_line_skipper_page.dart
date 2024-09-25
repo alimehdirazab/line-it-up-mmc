@@ -58,7 +58,7 @@ class _FindingLineSkipperPageViewState
                   ],
                 ),
                 SizedBox(width: context.mWidth * 0.15),
-                CircleIconButton(
+                CircleButton(
                   icon: LineItUpIcons().cross,
                   onPressed: () {
                     context.popPage();
@@ -229,13 +229,13 @@ class _FindingLineSkipperPageViewState
                   padding: const EdgeInsets.all(17),
                 ),
               ),
-              CircleIconButton(
+              CircleButton(
                 icon: LineItUpIcons().phone1,
                 onPressed: () {},
                 backgroundColor: LineItUpColorTheme().grey20,
                 radius: 27,
               ),
-              CircleIconButton(
+              CircleButton(
                 icon: LineItUpIcons().message,
                 onPressed: () {
                   showModalBottomSheet(
@@ -357,7 +357,7 @@ class ChatBottomSheet extends StatelessWidget {
                         .copyWith(fontSize: 14, fontWeight: FontWeight.w600),
                   ),
                   const Spacer(),
-                  CircleIconButton(
+                  CircleButton(
                     icon: LineItUpIcons().phone1,
                     backgroundColor: LineItUpColorTheme().grey20,
                     radius: 27,

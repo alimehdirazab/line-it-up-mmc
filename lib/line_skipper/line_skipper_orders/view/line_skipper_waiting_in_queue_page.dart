@@ -32,13 +32,13 @@ class LineSkipperWaitingInQueueView extends StatelessWidget {
                   onPressed: () => Navigator.pop(context),
                 ),
                 const Spacer(),
-                CircleIconButton(
+                CircleButton(
                   icon: LineItUpIcons().phone1,
                   onPressed: () {},
                   backgroundColor: LineItUpColorTheme().grey20,
                 ),
                 const SizedBox(width: 12),
-                CircleIconButton(
+                CircleButton(
                   icon: LineItUpIcons().message,
                   onPressed: () {},
                   backgroundColor: LineItUpColorTheme().grey20,

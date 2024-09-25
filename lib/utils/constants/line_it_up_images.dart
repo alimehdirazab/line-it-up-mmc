@@ -18,8 +18,12 @@ class LineItUpImages {
   static const String store5 = 'assets/images/store_5.png';
   static const String manAvatar = 'assets/images/man_avatar.png';
   static const String manAvatar1 = 'assets/images/man_avatar1.png';
-  static const String masterCard = 'assets/images/master_card_logo.png';
   static const String checkVerified = 'assets/images/check_verified.png';
   static const String lineSkipper = 'assets/images/line_skipper_rider.png';
   static const String income = 'assets/images/income.png';
+  static const String cash = 'assets/images/cash.png';
+  static const String visa = 'assets/images/visa.png';
+  static const String masterCard = 'assets/images/master_card_logo.png';
+  static const String paypal = 'assets/images/paypal.png';
+  static const String qrBackground = 'assets/images/qr_background.png';
 }

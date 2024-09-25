@@ -27,6 +27,8 @@ dependencies:
   google_maps_flutter: ^2.9.0
   mobile_scanner: ^5.2.3
   pretty_qr_code: ^3.3.0
+  flutter_stripe: ^11.1.0
+  fl_chart: ^0.69.0
   
 
 dev_dependencies:

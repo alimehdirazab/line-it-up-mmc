@@ -58,6 +58,7 @@ class LineSkipperWalletView extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 32),
+            //Primary Payment Method
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -67,7 +68,10 @@ class LineSkipperWalletView extends StatelessWidget {
                           fontWeight: FontWeight.w600,
                         )),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    context
+                        .pushPage(const LineSkipperChangePaymentMethodPage());
+                  },
                   child: Row(
                     children: [
                       Icon(
@@ -86,6 +90,61 @@ class LineSkipperWalletView extends StatelessWidget {
                 )
               ],
             ),
+            const SizedBox(height: 16),
+            const PaymentMethodTile(
+              paymetMehtodLogoUrl: LineItUpImages.visa,
+              paymentMethodName: 'Visa',
+              subtitle: '****7979',
+              isPrimary: true,
+            ),
+
+            const SizedBox(height: 32),
+            //Transaction History
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(translate(context, 'transaction_history'),
+                    style: LineItUpTextTheme().body.copyWith(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                        )),
+                GestureDetector(
+                  onTap: () {},
+                  child: Row(
+                    children: [
+                      Icon(
+                        LineItUpIcons().currencyExchange,
+                        color: LineItUpColorTheme().black,
+                        size: 14,
+                      ),
+                      const SizedBox(width: 8),
+                      Text(translate(context, 'all_transactions'),
+                          style: LineItUpTextTheme().body.copyWith(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w600,
+                              )),
+                    ],
+                  ),
+                )
+              ],
+            ),
+            const SizedBox(height: 16),
+            const TransactionTile(
+                paymetMehtodLogoUrl: LineItUpImages.visa,
+                name: 'James Andrew',
+                date: 'Aug 12',
+                storeName: '“Food for Health”',
+                transaction: 10.5),
+
+            const SizedBox(height: 16),
+            const Divider(),
+            const SizedBox(height: 16),
+            const TransactionTile(
+                paymetMehtodLogoUrl: LineItUpImages.visa,
+                name: 'James Andrew',
+                date: 'Aug 12',
+                storeName: '“Food for Health”',
+                transaction: 10.5)
           ],
         ),
       ),

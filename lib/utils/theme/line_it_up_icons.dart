@@ -19,6 +19,8 @@ class LineItUpIcons {
 
   IconData get delete => Icons.delete_forever;
 
+  IconData get delete1 => Icons.delete;
+
   IconData get cart => Icons.shopping_cart;
 
   IconData get flash => Icons.flash_on_outlined;
@@ -60,6 +62,8 @@ class LineItUpIcons {
   IconData get turnRight => Icons.turn_right;
 
   IconData get currencyExchange => Icons.currency_exchange;
+
+  IconData get scanner => Icons.document_scanner_outlined;
 
 //no delivery icon
 }

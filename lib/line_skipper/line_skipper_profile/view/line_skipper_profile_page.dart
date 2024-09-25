@@ -32,12 +32,17 @@ class LineSkipperProfileView extends StatelessWidget {
                 const SizedBox(height: 12),
                 Text('Alex William', style: LineItUpTextTheme().body),
                 const SizedBox(height: 4),
-                Text(translate(context, 'manage_account'),
-                    style: LineItUpTextTheme().body.copyWith(
-                          color: LineItUpColorTheme().primary,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                        )),
+                GestureDetector(
+                  onTap: () {
+                    context.pushPage(const LineSkipperManageAccountPage());
+                  },
+                  child: Text(translate(context, 'manage_account'),
+                      style: LineItUpTextTheme().body.copyWith(
+                            color: LineItUpColorTheme().grey60,
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                          )),
+                ),
                 const SizedBox(height: 36),
               ],
             ),
@@ -80,18 +85,28 @@ class LineSkipperProfileView extends StatelessWidget {
                           },
                         ),
                         _profileListTile(
-                          title: translate(context, 'location'),
-                          subtitle:
-                              translate(context, 'add_or_remove_your_location'),
-                          divider: true,
-                        ),
-                        _profileListTile(
+                          onTap: () {
+                            context.pushPage(const LineSkipperStatisticsPage());
+                          },
                           title: translate(context, 'statistics'),
                           subtitle: translate(
                               context, 'get_your_overall_performance_stats'),
                           divider: true,
                         ),
                         _profileListTile(
+                          onTap: () {
+                            context.pushPage(const LineSkipperQrCodePage());
+                          },
+                          title: 'QR Code',
+                          subtitle:
+                              translate(context, 'scan_for_your_information'),
+                          divider: true,
+                        ),
+                        _profileListTile(
+                          onTap: () {
+                            context
+                                .pushPage(const LineSkipperPrivacyPolicyPage());
+                          },
                           title: translate(context, 'privacy_policy'),
                           subtitle: translate(
                               context, 'learn_about_privacy_and_account'),

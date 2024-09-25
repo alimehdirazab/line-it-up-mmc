@@ -82,13 +82,13 @@ class LIneSkipperOrderAcceptedView extends StatelessWidget {
                       ],
                     ),
                     const Spacer(),
-                    CircleIconButton(
+                    CircleButton(
                       icon: LineItUpIcons().phone1,
                       backgroundColor: LineItUpColorTheme().grey20,
                       radius: 32,
                     ),
                     const SizedBox(width: 10),
-                    CircleIconButton(
+                    CircleButton(
                       icon: LineItUpIcons().message,
                       backgroundColor: LineItUpColorTheme().grey20,
                       radius: 32,
@@ -182,7 +182,7 @@ class LIneSkipperOrderAcceptedView extends StatelessWidget {
                   ],
                 ),
               ),
-              CircleIconButton(
+              CircleButton(
                 icon: LineItUpIcons().cross,
                 onPressed: () {},
               ),
