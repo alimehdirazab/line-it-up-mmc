@@ -192,5 +192,8 @@
     "weekly_earnings": "Weekly Earnings",
     "monthly_earnings": "Monthly Earnings",
     "yearly_earnings": "Yearly Earnings",
-    "tip": "Tip"
+    "tip": "Tip",
+    "logout": "Logout",
+    "are_you_sure_you_want_to_logout_this_account": "Are you sure you want to logout this account?",
+    "when_your_status_on_the_app_is_set_to_offline_you_will_not_receive_any_orders": "When your status on the app is set to \"offline,\" you will not receive any orders."
 }

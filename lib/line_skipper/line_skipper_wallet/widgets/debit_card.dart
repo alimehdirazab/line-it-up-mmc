@@ -13,10 +13,12 @@ class DebitCard extends StatelessWidget {
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   children: [
@@ -36,6 +38,7 @@ class DebitCard extends StatelessWidget {
                             fontWeight: FontWeight.w600,
                           ),
                     ),
+                    const SizedBox(width: 35),
                     CustomElevatedButton(
                       title: translate(context, 'primary'),
                       buttonColor:
@@ -46,6 +49,7 @@ class DebitCard extends StatelessWidget {
                     )
                   ],
                 ),
+                const SizedBox(height: 74),
                 Text('****7979',
                     style: LineItUpTextTheme().body.copyWith(
                           fontSize: 12,
@@ -57,7 +61,7 @@ class DebitCard extends StatelessWidget {
           ),
           Container(
             width: 63,
-            height: 155,
+            height: 157,
             decoration: BoxDecoration(
               color: LineItUpColorTheme().grey70,
               borderRadius: const BorderRadius.only(
@@ -69,7 +73,7 @@ class DebitCard extends StatelessWidget {
               children: [
                 Container(
                   width: 34,
-                  height: 155,
+                  height: 157,
                   decoration: BoxDecoration(
                     color: LineItUpColorTheme().grey40,
                     borderRadius: const BorderRadius.only(

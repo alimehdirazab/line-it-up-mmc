@@ -14,6 +14,9 @@ class CreatePasswordView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Focus node to control focus on the text field
+    final FocusNode passwordFocusNode = FocusNode();
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 24),
@@ -89,23 +92,44 @@ class CreatePasswordView extends StatelessWidget {
                     fontWeight: FontWeight.w300,
                   ),
             ),
-            const CustomTextField(
-              hintText: '********',
-              keyboardType: TextInputType.emailAddress,
-            ),
+            BlocBuilder<SignUPCubit, SignUpState>(
+                buildWhen: (previous, current) =>
+                    previous.isPasswordObscure != current.isPasswordObscure,
+                builder: (context, state) {
+                  return CustomTextField(
+                    focusNode: passwordFocusNode, // Attach the focus node
+                    hintText: '********',
+                    keyboardType: TextInputType.emailAddress,
+                    obscureText: state.isPasswordObscure,
+                  );
+                }),
             SizedBox(height: context.mHeight * 0.04),
             Row(
               children: [
                 GestureDetector(
-                  onTap: () {},
-                  child: Text(
-                    translate(context, 'show_password'),
-                    style: LineItUpTextTheme().body.copyWith(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          color: LineItUpColorTheme().primary,
-                        ),
-                  ),
+                  onTap: () {
+                    // Toggle password visibility and keep focus on the text field
+                    context.read<SignUPCubit>().togglePasswordObscure();
+                    FocusScope.of(context).requestFocus(passwordFocusNode);
+                  },
+                  child: BlocBuilder<SignUPCubit, SignUpState>(
+                      buildWhen: (previous, current) =>
+                          previous.isPasswordObscure !=
+                          current.isPasswordObscure,
+                      builder: (context, state) {
+                        return Text(
+                          translate(
+                              context,
+                              state.isPasswordObscure
+                                  ? 'show_password'
+                                  : 'hide_password'),
+                          style: LineItUpTextTheme().body.copyWith(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                color: LineItUpColorTheme().primary,
+                              ),
+                        );
+                      }),
                 ),
               ],
             ),
@@ -115,7 +139,6 @@ class CreatePasswordView extends StatelessWidget {
               child: CustomElevatedButton(
                 title: translate(context, 'continue'),
                 onTap: () {
-                  // Navigate to the OTP page with the SignInCubit instance
                   context.pushPage(BlocProvider.value(
                     value: context.read<SignUPCubit>(),
                     child: const ReEnterPasswordPage(),

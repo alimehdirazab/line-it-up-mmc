@@ -14,6 +14,8 @@ class EnterPasswordView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Focus node to control focus on the text field
+    final FocusNode passwordFocusNode = FocusNode();
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 24),
@@ -38,37 +40,40 @@ class EnterPasswordView extends StatelessWidget {
                     }),
               ],
             ),
-            BlocBuilder<LoginCubit, LoginState>(builder: (context, state) {
-              return state.userType == 0
-                  ? Row(
-                      children: [
-                        Icon(LineItUpIcons().user, size: 16),
-                        const SizedBox(width: 5),
-                        Text(
-                          translate(context, 'user'),
-                          style: LineItUpTextTheme().body.copyWith(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w500,
-                                color: LineItUpColorTheme().primary,
-                              ),
-                        ),
-                      ],
-                    )
-                  : Row(
-                      children: [
-                        Icon(LineItUpIcons().lineSkipperCross, size: 16),
-                        const SizedBox(width: 5),
-                        Text(
-                          translate(context, 'line_skipper'),
-                          style: LineItUpTextTheme().body.copyWith(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w500,
-                                color: LineItUpColorTheme().primary,
-                              ),
-                        ),
-                      ],
-                    );
-            }),
+            BlocBuilder<LoginCubit, LoginState>(
+                buildWhen: (previous, current) =>
+                    previous.userType != current.userType,
+                builder: (context, state) {
+                  return state.userType == 0
+                      ? Row(
+                          children: [
+                            Icon(LineItUpIcons().user, size: 16),
+                            const SizedBox(width: 5),
+                            Text(
+                              translate(context, 'user'),
+                              style: LineItUpTextTheme().body.copyWith(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w500,
+                                    color: LineItUpColorTheme().primary,
+                                  ),
+                            ),
+                          ],
+                        )
+                      : Row(
+                          children: [
+                            Icon(LineItUpIcons().lineSkipperCross, size: 16),
+                            const SizedBox(width: 5),
+                            Text(
+                              translate(context, 'line_skipper'),
+                              style: LineItUpTextTheme().body.copyWith(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w500,
+                                    color: LineItUpColorTheme().primary,
+                                  ),
+                            ),
+                          ],
+                        );
+                }),
             const SizedBox(height: 10),
             Text(
               translate(context, 'enter_password'),
@@ -82,23 +87,42 @@ class EnterPasswordView extends StatelessWidget {
                     fontWeight: FontWeight.w300,
                   ),
             ),
-            const CustomTextField(
-              hintText: '********',
-              keyboardType: TextInputType.emailAddress,
-            ),
+            BlocBuilder<LoginCubit, LoginState>(
+                buildWhen: (previous, current) =>
+                    previous.isObscure != current.isObscure,
+                builder: (context, state) {
+                  return CustomTextField(
+                    // focusNode: passwordFocusNode,
+                    hintText: '********',
+                    keyboardType: TextInputType.text,
+                    obscureText: state.isObscure,
+                  );
+                }),
             SizedBox(height: context.mHeight * 0.04),
             Row(
               children: [
                 GestureDetector(
-                  onTap: () {},
-                  child: Text(
-                    translate(context, 'show_password'),
-                    style: LineItUpTextTheme().body.copyWith(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          color: LineItUpColorTheme().primary,
-                        ),
-                  ),
+                  onTap: () {
+                    context.read<LoginCubit>().toggleObscure();
+                    FocusScope.of(context).requestFocus(passwordFocusNode);
+                  },
+                  child: BlocBuilder<LoginCubit, LoginState>(
+                      buildWhen: (previous, current) =>
+                          previous.isObscure != current.isObscure,
+                      builder: (context, state) {
+                        return Text(
+                          translate(
+                              context,
+                              state.isObscure
+                                  ? 'show_password'
+                                  : 'hide_password'),
+                          style: LineItUpTextTheme().body.copyWith(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                color: LineItUpColorTheme().primary,
+                              ),
+                        );
+                      }),
                 ),
               ],
             ),
@@ -108,6 +132,7 @@ class EnterPasswordView extends StatelessWidget {
               child: CustomElevatedButton(
                 title: translate(context, 'login'),
                 onTap: () {
+                  _hideKeyboard;
                   context.read<LoginCubit>().state.userType == 0
                       ? context.pushPage(const RootPage())
                       : context.pushPage(const LineSkipperRootPage());
@@ -118,5 +143,13 @@ class EnterPasswordView extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  // Force hide keyboard method
+  void _hideKeyboard() {
+    FocusManager.instance.primaryFocus
+        ?.unfocus(); // This unfocuses the text field
+    SystemChannels.textInput
+        .invokeMethod('TextInput.hide'); // Explicitly hides the keyboard
   }
 }

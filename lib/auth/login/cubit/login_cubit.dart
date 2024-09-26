@@ -11,4 +11,10 @@ class LoginCubit extends Cubit<LoginState> {
       userType: tab,
     ));
   }
+
+  void toggleObscure() {
+    emit(state.copyWith(
+      isObscure: !state.isObscure,
+    ));
+  }
 }

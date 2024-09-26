@@ -5,7 +5,10 @@ class LineSkipperHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const LineSkipperHomeView();
+    return BlocProvider(
+      create: (context) => LineSkipperHomeCubit(),
+      child: const LineSkipperHomeView(),
+    );
   }
 }
 
@@ -73,11 +76,52 @@ class LineSkipperHomeView extends StatelessWidget {
               ),
             ],
           ),
+          BlocBuilder<LineSkipperHomeCubit, LineSkipperHomeState>(
+              buildWhen: (previous, current) =>
+                  previous.status != current.status,
+              builder: (context, state) {
+                return state.status == LineSkipperStatus.offline
+                    ? Padding(
+                        padding: const EdgeInsets.only(
+                          left: 16,
+                          right: 16,
+                          top: 16,
+                        ),
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 12, horizontal: 8),
+                          decoration: BoxDecoration(
+                            color: LineItUpColorTheme().grey20,
+                            border: Border.all(
+                              color: LineItUpColorTheme().grey50,
+                              width: 1,
+                            ),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Row(
+                            children: [
+                              Icon(LineItUpIcons().infomsg,
+                                  color: LineItUpColorTheme().black),
+                              const SizedBox(width: 8),
+                              Flexible(
+                                child: Text(
+                                    translate(context,
+                                        'when_your_status_on_the_app_is_set_to_offline_you_will_not_receive_any_orders'),
+                                    style: LineItUpTextTheme().body.copyWith(
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w400,
+                                        )),
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                    : const SizedBox();
+              }),
           Flexible(
             child: SingleChildScrollView(
               child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 17, vertical: 17),
+                padding: const EdgeInsets.symmetric(horizontal: 17),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -128,27 +172,38 @@ class LineSkipperHomeView extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const SizedBox(height: 24),
-                    Text(
-                      translate(context, 'active_order'),
-                      style: LineItUpTextTheme()
-                          .body
-                          .copyWith(fontWeight: FontWeight.w600),
-                    ),
-                    const SizedBox(height: 8),
-                    const OrderCard(
-                      storeName: 'Food for Health',
-                      storeAddress: 'ABCD Street, California',
-                      distance: 1.5,
-                      estimatedCost: 15.87,
-                      orders: [
-                        'Arizona Drinks - 22 Oz',
-                        'Guerrero Riquisima Flour Tortillas',
-                        'Cranberry Juice - 3 Liter',
-                      ],
-                      viewOrderButton: true,
-                      showMap: true,
-                    ),
+                    BlocBuilder<LineSkipperHomeCubit, LineSkipperHomeState>(
+                        buildWhen: (previous, current) =>
+                            previous.status != current.status,
+                        builder: (context, state) {
+                          return state.status == LineSkipperStatus.online
+                              ? Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const SizedBox(height: 24),
+                                    Text(
+                                      translate(context, 'active_order'),
+                                      style: LineItUpTextTheme().body.copyWith(
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                    const SizedBox(height: 8),
+                                    const OrderCard(
+                                      storeName: 'Food for Health',
+                                      storeAddress: 'ABCD Street, California',
+                                      distance: 1.5,
+                                      estimatedCost: 15.87,
+                                      orders: [
+                                        'Arizona Drinks - 22 Oz',
+                                        'Guerrero Riquisima Flour Tortillas',
+                                        'Cranberry Juice - 3 Liter',
+                                      ],
+                                      viewOrderButton: true,
+                                      showMap: true,
+                                    ),
+                                  ],
+                                )
+                              : const SizedBox();
+                        })
                   ],
                 ),
               ),
@@ -160,60 +215,83 @@ class LineSkipperHomeView extends StatelessWidget {
   }
 
   Widget _statusCard(BuildContext context) {
-    return Container(
-      height: 65,
-      padding: const EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        color: LineItUpColorTheme().grey20,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Row(
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  Text(translate(context, 'status'),
-                      style: LineItUpTextTheme().body.copyWith(
-                            fontWeight: FontWeight.w600,
-                          )),
-                  const SizedBox(width: 5),
-                  Text(translate(context, 'online'),
-                      style: LineItUpTextTheme().body.copyWith(
-                            color: LineItUpColorTheme().green,
-                            fontWeight: FontWeight.w600,
-                          )),
-                ],
-              ),
-              const SizedBox(height: 5),
-              Flexible(
-                child: Text(
-                  translate(
-                      context, 'switch_off_button_to_disable_your_status'),
-                  style: LineItUpTextTheme().body.copyWith(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
+    return BlocBuilder<LineSkipperHomeCubit, LineSkipperHomeState>(
+        buildWhen: (previous, current) => previous.status != current.status,
+        builder: (context, state) {
+          return Container(
+            height: 65,
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              color: LineItUpColorTheme().grey20,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Row(
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Text(translate(context, 'status'),
+                            style: LineItUpTextTheme().body.copyWith(
+                                  fontWeight: FontWeight.w600,
+                                )),
+                        const SizedBox(width: 5),
+                        Text(
+                            translate(
+                              context,
+                              state.status == LineSkipperStatus.online
+                                  ? 'online'
+                                  : 'offline',
+                            ),
+                            style: LineItUpTextTheme().body.copyWith(
+                                  color:
+                                      state.status == LineSkipperStatus.online
+                                          ? LineItUpColorTheme().green
+                                          : LineItUpColorTheme().red,
+                                  fontWeight: FontWeight.w600,
+                                )),
+                      ],
+                    ),
+                    const SizedBox(height: 5),
+                    Flexible(
+                      child: Text(
+                        translate(
+                            context,
+                            state.status == LineSkipperStatus.online
+                                ? 'switch_off_button_to_disable_your_status'
+                                : 'switch_on_button_to_enable_your_status'),
+                        style: LineItUpTextTheme().body.copyWith(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w400,
+                            ),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 2,
+                        textAlign: TextAlign.center,
                       ),
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 2,
-                  textAlign: TextAlign.center,
+                    ),
+                  ],
                 ),
-              ),
-            ],
-          ),
-          const Spacer(),
-          Switch(
-            value: true,
-            onChanged: (value) {},
-            activeColor: LineItUpColorTheme().green,
-            activeTrackColor: LineItUpColorTheme().grey40,
-            inactiveTrackColor: LineItUpColorTheme().grey40,
-            inactiveThumbColor: LineItUpColorTheme().grey,
-          ),
-        ],
-      ),
-    );
+                const Spacer(),
+                Switch(
+                  value: state.status == LineSkipperStatus.online,
+                  onChanged: (value) {
+                    context
+                        .read<LineSkipperHomeCubit>()
+                        .toggleLineSkipperStatus();
+                  },
+                  activeColor: LineItUpColorTheme().green,
+                  activeTrackColor: LineItUpColorTheme().grey40,
+                  inactiveTrackColor: LineItUpColorTheme().grey40,
+                  inactiveThumbColor: LineItUpColorTheme().grey,
+                  trackOutlineColor:
+                      WidgetStateProperty.all(LineItUpColorTheme().grey40),
+                  trackOutlineWidth: const WidgetStatePropertyAll(0),
+                ),
+              ],
+            ),
+          );
+        });
   }
 
   Widget _dailyStateBox({

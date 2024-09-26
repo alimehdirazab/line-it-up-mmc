@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:line_it_up/auth/login/view/view.dart';
+import 'package:line_it_up/custom_widgets/custom_widgets.dart';
 import 'package:line_it_up/line_skipper/line_skipper_mange_account/view/view.dart';
 import 'package:line_it_up/line_skipper/line_skipper_privacy_policy/view/view.dart';
 import 'package:line_it_up/line_skipper/line_skipper_qr_code/view/view.dart';

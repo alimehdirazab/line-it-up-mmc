@@ -67,7 +67,6 @@ class LineSkipperCardDetailsView extends StatelessWidget {
             ),
             const SizedBox(width: 16),
             const Divider(),
-            const SizedBox(width: 16),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -76,6 +75,7 @@ class LineSkipperCardDetailsView extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      const SizedBox(height: 16),
                       Text(
                         translate(context, 'remove_card'),
                         style: LineItUpTextTheme().body.copyWith(
@@ -174,6 +174,7 @@ class RemoveCardBottomSheet extends StatelessWidget {
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
                 onTap: () {
+                  context.popPage();
                   context.pushPage(const AddCardDetailsPage());
                 },
               ),

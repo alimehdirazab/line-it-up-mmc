@@ -14,6 +14,8 @@ class ReEnterPasswordView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Focus node to control focus on the text field
+    final FocusNode passwordFocusNode = FocusNode();
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 24),
@@ -89,22 +91,44 @@ class ReEnterPasswordView extends StatelessWidget {
                     fontWeight: FontWeight.w300,
                   ),
             ),
-            const CustomTextField(
-              hintText: '********',
-              keyboardType: TextInputType.emailAddress,
-            ),
+            BlocBuilder<SignUPCubit, SignUpState>(
+                buildWhen: (previous, current) =>
+                    previous.isReEnterPasswordObscure !=
+                    current.isReEnterPasswordObscure,
+                builder: (context, state) {
+                  return CustomTextField(
+                    focusNode: passwordFocusNode,
+                    hintText: '********',
+                    keyboardType: TextInputType.emailAddress,
+                    obscureText: state.isReEnterPasswordObscure,
+                  );
+                }),
             SizedBox(height: context.mHeight * 0.04),
             Row(
               children: [
                 GestureDetector(
-                  child: Text(
-                    translate(context, 'show_password'),
-                    style: LineItUpTextTheme().body.copyWith(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          color: LineItUpColorTheme().primary,
-                        ),
-                  ),
+                  onTap: () {
+                    context.read<SignUPCubit>().toggleReEnterPasswordObscure();
+                    FocusScope.of(context).requestFocus(passwordFocusNode);
+                  },
+                  child: BlocBuilder<SignUPCubit, SignUpState>(
+                      buildWhen: (previous, current) =>
+                          previous.isReEnterPasswordObscure !=
+                          current.isReEnterPasswordObscure,
+                      builder: (context, state) {
+                        return Text(
+                          translate(
+                              context,
+                              state.isReEnterPasswordObscure
+                                  ? 'show_password'
+                                  : 'hide_password'),
+                          style: LineItUpTextTheme().body.copyWith(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                color: LineItUpColorTheme().primary,
+                              ),
+                        );
+                      }),
                 ),
               ],
             ),

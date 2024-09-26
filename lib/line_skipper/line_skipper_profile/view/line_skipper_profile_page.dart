@@ -136,6 +136,90 @@ class LineSkipperProfileView extends StatelessWidget {
                           ),
                           status: 'Online',
                         ),
+                        SizedBox(
+                          width: double.infinity,
+                          child: CustomElevatedButton(
+                            title: 'Logout',
+                            onTap: () {
+                              showDialog(
+                                  context: context,
+                                  builder: (_) => Dialog(
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 16),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.min,
+                                            children: [
+                                              const SizedBox(height: 16),
+                                              Text(translate(context, 'logout'),
+                                                  style: LineItUpTextTheme()
+                                                      .body
+                                                      .copyWith(
+                                                        fontSize: 18,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        color:
+                                                            LineItUpColorTheme()
+                                                                .red,
+                                                      )),
+                                              const SizedBox(height: 14),
+                                              Text(
+                                                  translate(context,
+                                                      'are_you_sure_you_want_to_logout_this_account'),
+                                                  style: LineItUpTextTheme()
+                                                      .body
+                                                      .copyWith(
+                                                        fontSize: 12,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                      )),
+                                              const SizedBox(height: 25),
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceEvenly,
+                                                children: [
+                                                  SizedBox(
+                                                    width:
+                                                        context.mWidth * 0.32,
+                                                    child: CustomElevatedButton(
+                                                      title: translate(
+                                                          context, 'no'),
+                                                      onTap: () {
+                                                        context.popPage();
+                                                      },
+                                                      buttonColor:
+                                                          LineItUpColorTheme()
+                                                              .grey20,
+                                                      fontColor:
+                                                          LineItUpColorTheme()
+                                                              .black,
+                                                    ),
+                                                  ),
+                                                  SizedBox(
+                                                    width:
+                                                        context.mWidth * 0.32,
+                                                    child: CustomElevatedButton(
+                                                      title: translate(
+                                                          context, 'yes'),
+                                                      onTap: () {
+                                                        context.popPage();
+                                                        context.pushAndRemoveUntilPage(
+                                                            const LoginPage());
+                                                      },
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              const SizedBox(height: 16),
+                                            ],
+                                          ),
+                                        ),
+                                      ));
+                            },
+                            buttonColor: LineItUpColorTheme().red,
+                          ),
+                        )
                       ],
                     ),
                   )
