@@ -5,7 +5,11 @@ class LineSkipperPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const LineSkipperView();
+    // Ensure that BlocProvider is provided for the entire LineSkipperView
+    return BlocProvider(
+      create: (context) => LineSkipperCubit(),
+      child: const LineSkipperView(),
+    );
   }
 }
 
@@ -14,6 +18,7 @@ class LineSkipperView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // BlocBuilder can now access the LineSkipperCubit
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -21,7 +26,6 @@ class LineSkipperView extends StatelessWidget {
           style: LineItUpTextTheme().body,
         ),
         centerTitle: true,
-        automaticallyImplyLeading: false,
         actions: [
           Padding(
             padding: EdgeInsets.only(right: context.mWidth * 0.04),
@@ -67,44 +71,83 @@ class LineSkipperView extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          CategoryCard(
-                            categoryText: translate(context, 'grocery'),
-                            categoryImage: LineItUpImages.grocery,
-                            isSelected: true,
+                    BlocBuilder<LineSkipperCubit, LineSkipperState>(
+                      buildWhen: (previous, current) =>
+                          previous.selectedCategory != current.selectedCategory,
+                      builder: (context, state) {
+                        return SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: [
+                              CategoryCard(
+                                onTap: () {
+                                  context
+                                      .read<LineSkipperCubit>()
+                                      .selectCategory(
+                                        Catergory.grocery,
+                                      );
+                                },
+                                categoryText: translate(context, 'grocery'),
+                                categoryImage: LineItUpImages.grocery,
+                                isSelected:
+                                    state.selectedCategory == Catergory.grocery,
+                              ),
+                              CategoryCard(
+                                onTap: () {
+                                  context
+                                      .read<LineSkipperCubit>()
+                                      .selectCategory(
+                                        Catergory.fastFood,
+                                      );
+                                },
+                                categoryText: translate(context, 'fast_food'),
+                                categoryImage: LineItUpImages.fastFood,
+                                isSelected: state.selectedCategory ==
+                                    Catergory.fastFood,
+                              ),
+                              CategoryCard(
+                                onTap: () {
+                                  context
+                                      .read<LineSkipperCubit>()
+                                      .selectCategory(
+                                        Catergory.coffee,
+                                      );
+                                },
+                                categoryText: translate(context, 'coffee'),
+                                categoryImage: LineItUpImages.coffee,
+                                isSelected:
+                                    state.selectedCategory == Catergory.coffee,
+                              ),
+                              CategoryCard(
+                                onTap: () {
+                                  context
+                                      .read<LineSkipperCubit>()
+                                      .selectCategory(
+                                        Catergory.pizza,
+                                      );
+                                },
+                                categoryText: translate(context, 'pizza'),
+                                categoryImage: LineItUpImages.pizza,
+                                isSelected:
+                                    state.selectedCategory == Catergory.pizza,
+                              ),
+                            ],
                           ),
-                          CategoryCard(
-                            categoryText: translate(context, 'fast_food'),
-                            categoryImage: LineItUpImages.fastFood,
-                            isSelected: false,
-                          ),
-                          CategoryCard(
-                            categoryText: translate(context, 'coffee'),
-                            categoryImage: LineItUpImages.coffee,
-                            isSelected: false,
-                          ),
-                          CategoryCard(
-                            categoryText: translate(context, 'pizza'),
-                            categoryImage: LineItUpImages.pizza,
-                            isSelected: false,
-                          ),
-                        ],
-                      ),
+                        );
+                      },
                     ),
                     const SizedBox(height: 16),
                     const Divider(),
                     const SizedBox(height: 16),
                     GeneralTile(
-                        icon: LineItUpIcons().location,
-                        title: translate(context, 'nearby'),
-                        subtitle: '12348  street, LA',
-                        trailing: LineItUpIcons().edit,
-                        onTap: () {
-                          context.pushPage(const ConfirmLocationPage());
-                        }),
+                      icon: LineItUpIcons().location,
+                      title: translate(context, 'nearby'),
+                      subtitle: '12348 street, LA',
+                      trailing: LineItUpIcons().edit,
+                      onTap: () {
+                        context.pushPage(const ConfirmLocationPage());
+                      },
+                    ),
                     const SizedBox(height: 16),
                     const StroreCard(
                       image: LineItUpImages.store1,

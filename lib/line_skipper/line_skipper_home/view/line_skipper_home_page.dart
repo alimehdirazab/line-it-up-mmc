@@ -5,10 +5,7 @@ class LineSkipperHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => LineSkipperHomeCubit(),
-      child: const LineSkipperHomeView(),
-    );
+    return const LineSkipperHomeView();
   }
 }
 

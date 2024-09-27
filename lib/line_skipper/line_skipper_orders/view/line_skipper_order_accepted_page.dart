@@ -184,7 +184,9 @@ class LIneSkipperOrderAcceptedView extends StatelessWidget {
               ),
               CircleButton(
                 icon: LineItUpIcons().cross,
-                onPressed: () {},
+                onPressed: () {
+                  context.popPage();
+                },
               ),
             ],
           ),

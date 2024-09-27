@@ -17,8 +17,7 @@ class LineSkipperCubit extends Cubit<LineSkipperState> {
   }
 
   // Method to select a category
-  void selectCategory(int selectedCategoryIndex) {
-    emit(state.copyWith(
-        selectedCategory: Catergory.values[selectedCategoryIndex]));
+  void selectCategory(Catergory selectedCategoryIndex) {
+    emit(state.copyWith(selectedCategory: selectedCategoryIndex));
   }
 }

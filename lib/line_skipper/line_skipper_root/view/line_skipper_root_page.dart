@@ -5,8 +5,15 @@ class LineSkipperRootPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => LineSkipperRootCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<LineSkipperHomeCubit>(
+          create: (context) => LineSkipperHomeCubit(),
+        ),
+        BlocProvider<LineSkipperRootCubit>(
+          create: (context) => LineSkipperRootCubit(),
+        ),
+      ],
       child: const _LineSkipperRootView(),
     );
   }

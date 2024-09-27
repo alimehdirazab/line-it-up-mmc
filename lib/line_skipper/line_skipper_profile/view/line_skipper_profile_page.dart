@@ -124,18 +124,39 @@ class LineSkipperProfileView extends StatelessWidget {
                           ),
                           divider: true,
                         ),
-                        _profileListTile(
-                          title: translate(context, 'status'),
-                          trailing: Switch(
-                            value: true,
-                            onChanged: (value) {},
-                            activeColor: LineItUpColorTheme().green,
-                            activeTrackColor: LineItUpColorTheme().grey40,
-                            inactiveTrackColor: LineItUpColorTheme().grey40,
-                            inactiveThumbColor: LineItUpColorTheme().grey,
-                          ),
-                          status: 'Online',
-                        ),
+                        BlocBuilder<LineSkipperHomeCubit, LineSkipperHomeState>(
+                            buildWhen: (previous, current) =>
+                                previous.status != current.status,
+                            builder: (context, state) {
+                              return _profileListTile(
+                                title: translate(context, 'status'),
+                                trailing: Switch(
+                                  value:
+                                      state.status == LineSkipperStatus.online,
+                                  onChanged: (value) {
+                                    context
+                                        .read<LineSkipperHomeCubit>()
+                                        .toggleLineSkipperStatus();
+                                  },
+                                  activeColor: LineItUpColorTheme().green,
+                                  activeTrackColor: LineItUpColorTheme().grey40,
+                                  inactiveTrackColor:
+                                      LineItUpColorTheme().grey40,
+                                  inactiveThumbColor: LineItUpColorTheme().grey,
+                                  trackOutlineColor: WidgetStateProperty.all(
+                                      LineItUpColorTheme().grey40),
+                                  trackOutlineWidth:
+                                      const WidgetStatePropertyAll(0),
+                                ),
+                                status: state.status == LineSkipperStatus.online
+                                    ? translate(context, 'online')
+                                    : translate(context, 'offline'),
+                                statusColor:
+                                    state.status == LineSkipperStatus.online
+                                        ? LineItUpColorTheme().green
+                                        : LineItUpColorTheme().red,
+                              );
+                            }),
                         SizedBox(
                           width: double.infinity,
                           child: CustomElevatedButton(
@@ -255,6 +276,7 @@ class LineSkipperProfileView extends StatelessWidget {
       String? subtitle,
       Widget? trailing,
       String? status,
+      Color? statusColor,
       bool divider = false,
       void Function()? onTap}) {
     return Column(
@@ -272,7 +294,7 @@ class LineSkipperProfileView extends StatelessWidget {
                 const SizedBox(width: 5),
                 Text(status,
                     style: LineItUpTextTheme().body.copyWith(
-                          color: LineItUpColorTheme().primary,
+                          color: statusColor ?? LineItUpColorTheme().primary,
                           fontWeight: FontWeight.w600,
                         )),
               ]

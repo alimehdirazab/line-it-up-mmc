@@ -24,7 +24,7 @@ class LineSkipperCardDetailsView extends StatelessWidget {
         ),
         leading: IconButton(
             onPressed: () {
-              context.pushPage(const LineSkipperProfilePage());
+              context.pushPage(const LineSkipperRootPage());
             },
             icon: Icon(LineItUpIcons().cross)),
         centerTitle: true,
@@ -45,7 +45,7 @@ class LineSkipperCardDetailsView extends StatelessWidget {
             ),
             const SizedBox(height: 56),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Flexible(
                   child:

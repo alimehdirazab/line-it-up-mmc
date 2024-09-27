@@ -38,7 +38,7 @@ class DebitCard extends StatelessWidget {
                             fontWeight: FontWeight.w600,
                           ),
                     ),
-                    const SizedBox(width: 35),
+                    SizedBox(width: context.mWidth * 0.1),
                     CustomElevatedButton(
                       title: translate(context, 'primary'),
                       buttonColor:

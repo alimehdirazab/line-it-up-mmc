@@ -38,7 +38,7 @@ class _RootViewPages extends StatelessWidget {
           children: const [
             Placeholder(),
             Placeholder(),
-            LineSkipperView(),
+            LineSkipperPage(),
             Placeholder(),
             Placeholder(),
           ],
