@@ -205,11 +205,13 @@ class _SlidingPage extends StatelessWidget {
             image,
           ),
         ),
+        const SizedBox(height: 35),
         Text(
           title,
           style: LineItUpTextTheme().heading.copyWith(
                 fontSize: 20,
               ),
+          textAlign: TextAlign.center,
         ),
         SizedBox(height: context.mHeight * 0.02),
         Text(
@@ -217,7 +219,8 @@ class _SlidingPage extends StatelessWidget {
           textAlign: TextAlign.center,
           style: LineItUpTextTheme().body.copyWith(
                 fontSize: 14,
-                color: LineItUpColorTheme().black.withOpacity(0.5),
+                fontWeight: FontWeight.w300,
+                color: LineItUpColorTheme().black,
               ),
         ),
       ],

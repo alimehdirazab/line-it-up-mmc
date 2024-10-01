@@ -36,7 +36,7 @@ class _RootViewPages extends StatelessWidget {
         return IndexedStack(
           index: _buildPageIndex(state),
           children: const [
-            Placeholder(),
+            UserHomePage(),
             Placeholder(),
             LineSkipperPage(),
             Placeholder(),

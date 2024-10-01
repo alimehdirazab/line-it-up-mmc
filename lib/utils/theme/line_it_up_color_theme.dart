@@ -44,5 +44,9 @@ class LineItUpColorTheme {
 
   Color get yellow => const Color(0xFFE7C601);
 
+  Color get gradient1 => const Color(0xFFCECECE);
+
+  Color get gradient2 => const Color(0xFFFFFFFF);
+
   Color get transparent => Colors.transparent;
 }

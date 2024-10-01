@@ -3,13 +3,13 @@ part of 'widgets.dart';
 class CategoryCard extends StatelessWidget {
   final String categoryText;
   final String categoryImage;
-  final bool isSelected;
+  final bool? isSelected;
   final void Function()? onTap;
   const CategoryCard({
     super.key,
     required this.categoryText,
     required this.categoryImage,
-    required this.isSelected,
+    this.isSelected = false,
     this.onTap,
   });
 
@@ -21,7 +21,7 @@ class CategoryCard extends StatelessWidget {
         width: 80,
         height: 80,
         decoration: BoxDecoration(
-          color: isSelected
+          color: isSelected!
               ? LineItUpColorTheme().grey10
               : LineItUpColorTheme().white,
           borderRadius: BorderRadius.circular(4),

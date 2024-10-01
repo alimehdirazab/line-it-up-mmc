@@ -15,7 +15,7 @@
     "delivery_at_doorstep_description": "Enjoy easy online ordering with direct rider delivery to your door.",
     "track_order_description": "Stay updated with live order tracking and notifications.",
     "by_logging_in_or_registering": "By logging in or registering, you agree to our ",
-    "terms_of": "Terms of",
+    "terms_of": "Terms of ",
     "services": "services ",
     "and": "and ",
     "privacy_policy": "privacy policy",
@@ -195,5 +195,11 @@
     "tip": "Tip",
     "logout": "Logout",
     "are_you_sure_you_want_to_logout_this_account": "Are you sure you want to logout this account?",
-    "when_your_status_on_the_app_is_set_to_offline_you_will_not_receive_any_orders": "When your status on the app is set to \"offline,\" you will not receive any orders."
+    "when_your_status_on_the_app_is_set_to_offline_you_will_not_receive_any_orders": "When your status on the app is set to \"offline,\" you will not receive any orders.",
+    "deliver_at": "Deliver At",
+    "search_mart_product_foods": "Search mart, product & foods",
+    "pickup": "Pickup",
+    "categories": "Categories",
+    "stores_near_you": "Stores Near You",
+    "by": "By "
 }

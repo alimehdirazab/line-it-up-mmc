@@ -65,5 +65,7 @@ class LineItUpIcons {
 
   IconData get scanner => Icons.document_scanner_outlined;
 
+  IconData get car => Icons.directions_car_outlined;
+
 //no delivery icon
 }
