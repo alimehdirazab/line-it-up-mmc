@@ -22,7 +22,7 @@ class CategoryCard extends StatelessWidget {
         height: 80,
         decoration: BoxDecoration(
           color: isSelected!
-              ? LineItUpColorTheme().grey10
+              ? LineItUpColorTheme().grey20
               : LineItUpColorTheme().white,
           borderRadius: BorderRadius.circular(4),
         ),

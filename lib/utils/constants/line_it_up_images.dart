@@ -26,4 +26,9 @@ class LineItUpImages {
   static const String masterCard = 'assets/images/master_card_logo.png';
   static const String paypal = 'assets/images/paypal.png';
   static const String qrBackground = 'assets/images/qr_background.png';
+  static const String restaurant1 = 'assets/images/restaurant1.png';
+  static const String restaurant2 = 'assets/images/restaurant2.png';
+  static const String popularSpot1 = 'assets/images/popular_spot1.png';
+  static const String popularSpot2 = 'assets/images/popular_spot2.png';
+  static const String popularSpot3 = 'assets/images/popular_spot3.png';
 }

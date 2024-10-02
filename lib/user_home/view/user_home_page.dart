@@ -108,141 +108,271 @@ class _UserHomeViewState extends State<_UserHomeView>
                 ],
               )),
           const SizedBox(height: 16),
-          // Using BlocBuilder to listen for tab changes from the cubit
-          BlocBuilder<UserHomeCubit, UserHomeState>(
-            builder: (context, state) {
-              return TabBar(
-                isScrollable: true,
-                controller: _tabController,
-                indicatorColor: LineItUpColorTheme().primary,
-                labelColor: LineItUpColorTheme().primary,
-                unselectedLabelColor: LineItUpColorTheme().black,
-                dividerColor: LineItUpColorTheme().grey20,
-                indicatorSize: TabBarIndicatorSize
-                    .label, // Indicator takes space of content
-                indicatorWeight: 4, // Indicator weight
-                dividerHeight: 4,
-                tabAlignment: TabAlignment.start,
-                tabs: [
-                  Tab(
-                    child: Row(
-                      children: [
-                        Icon(LineItUpIcons().delivery),
-                        const SizedBox(width: 5),
-                        Text(translate(context, 'delivery')),
-                      ],
-                    ),
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  // Using BlocBuilder to listen for tab changes from the cubit
+                  BlocBuilder<UserHomeCubit, UserHomeState>(
+                    builder: (context, state) {
+                      return TabBar(
+                        isScrollable: true,
+                        controller: _tabController,
+                        indicatorColor: LineItUpColorTheme().primary,
+                        labelColor: LineItUpColorTheme().primary,
+                        unselectedLabelColor: LineItUpColorTheme().black,
+                        dividerColor: LineItUpColorTheme().grey20,
+                        indicatorSize: TabBarIndicatorSize
+                            .label, // Indicator takes space of content
+                        indicatorWeight: 4, // Indicator weight
+                        dividerHeight: 4,
+                        tabAlignment: TabAlignment.start,
+                        tabs: [
+                          Tab(
+                            child: Row(
+                              children: [
+                                Icon(LineItUpIcons().delivery),
+                                const SizedBox(width: 5),
+                                Text(translate(context, 'delivery')),
+                              ],
+                            ),
+                          ),
+                          Tab(
+                            child: Row(
+                              children: [
+                                Icon(LineItUpIcons().car),
+                                const SizedBox(width: 5),
+                                Text(translate(context, 'pickup')),
+                              ],
+                            ),
+                          ),
+                        ],
+                      );
+                    },
                   ),
-                  Tab(
-                    child: Row(
-                      children: [
-                        Icon(LineItUpIcons().car),
-                        const SizedBox(width: 5),
-                        Text(translate(context, 'pickup')),
-                      ],
-                    ),
-                  ),
-                ],
-              );
-            },
-          ),
 
-          //Categories
-          Padding(
-            padding: const EdgeInsets.only(left: 16, top: 24),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  translate(context, 'categories'),
-                  style: LineItUpTextTheme().heading.copyWith(
-                        fontWeight: FontWeight.w600,
-                      ),
-                ),
-                const SizedBox(height: 16),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      CategoryCard(
-                        onTap: () {},
-                        categoryText: translate(context, 'grocery'),
-                        categoryImage: LineItUpImages.grocery,
-                      ),
-                      const SizedBox(width: 16),
-                      CategoryCard(
-                        onTap: () {},
-                        categoryText: translate(context, 'fast_food'),
-                        categoryImage: LineItUpImages.fastFood,
-                      ),
-                      const SizedBox(width: 16),
-                      CategoryCard(
-                        onTap: () {},
-                        categoryText: translate(context, 'coffee'),
-                        categoryImage: LineItUpImages.coffee,
-                      ),
-                      const SizedBox(width: 16),
-                      CategoryCard(
-                        onTap: () {},
-                        categoryText: translate(context, 'pizza'),
-                        categoryImage: LineItUpImages.pizza,
-                      ),
-                    ],
+                  //Categories
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16, top: 24),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          translate(context, 'categories'),
+                          style: LineItUpTextTheme().heading.copyWith(
+                                fontWeight: FontWeight.w600,
+                              ),
+                        ),
+                        const SizedBox(height: 16),
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: [
+                              CategoryCard(
+                                onTap: () {},
+                                categoryText: translate(context, 'grocery'),
+                                categoryImage: LineItUpImages.grocery,
+                              ),
+                              const SizedBox(width: 16),
+                              CategoryCard(
+                                onTap: () {},
+                                categoryText: translate(context, 'fast_food'),
+                                categoryImage: LineItUpImages.fastFood,
+                              ),
+                              const SizedBox(width: 16),
+                              CategoryCard(
+                                onTap: () {},
+                                categoryText: translate(context, 'coffee'),
+                                categoryImage: LineItUpImages.coffee,
+                              ),
+                              const SizedBox(width: 16),
+                              CategoryCard(
+                                onTap: () {},
+                                categoryText: translate(context, 'pizza'),
+                                categoryImage: LineItUpImages.pizza,
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 24),
+                        Text(translate(context, 'stores_near_you'),
+                            style: LineItUpTextTheme().body.copyWith(
+                                  fontWeight: FontWeight.w600,
+                                )),
+                        const SizedBox(height: 16),
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: [
+                              CircleStoreCard(
+                                onTap: () {},
+                                image: LineItUpImages.store1,
+                                name: 'Cost Less Food Company',
+                                time: '01:30pm',
+                                isClosed: true,
+                              ),
+                              const SizedBox(width: 16),
+                              CircleStoreCard(
+                                onTap: () {},
+                                image: LineItUpImages.store2,
+                                name: 'Food for Health',
+                                time: '01:30pm',
+                              ),
+                              const SizedBox(width: 16),
+                              CircleStoreCard(
+                                onTap: () {},
+                                image: LineItUpImages.store3,
+                                name: 'Bristol Farms',
+                                time: '01:30pm',
+                              ),
+                              const SizedBox(width: 16),
+                              CircleStoreCard(
+                                onTap: () {},
+                                image: LineItUpImages.store4,
+                                name: 'Pavilions',
+                                time: '01:30pm',
+                                isClosed: true,
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
                   ),
-                ),
-                const SizedBox(height: 24),
-                Text(translate(context, 'stores_near_you'),
-                    style: LineItUpTextTheme().body.copyWith(
-                          fontWeight: FontWeight.w600,
-                        )),
-                const SizedBox(height: 16),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      CircleStoreCard(
-                        onTap: () {},
-                        image: LineItUpImages.store1,
-                        name: 'Cost Less Food Company',
-                        time: '01:30pm',
-                        isClosed: true,
-                      ),
-                      const SizedBox(width: 16),
-                      CircleStoreCard(
-                        onTap: () {},
-                        image: LineItUpImages.store2,
-                        name: 'Food for Health',
-                        time: '01:30pm',
-                      ),
-                      const SizedBox(width: 16),
-                      CircleStoreCard(
-                        onTap: () {},
-                        image: LineItUpImages.store3,
-                        name: 'Bristol Farms',
-                        time: '01:30pm',
-                      ),
-                      const SizedBox(width: 16),
-                      CircleStoreCard(
-                        onTap: () {},
-                        image: LineItUpImages.store4,
-                        name: 'Pavilions',
-                        time: '01:30pm',
-                        isClosed: true,
-                      ),
-                    ],
+                  const SizedBox(height: 24),
+                  //divder
+                  Container(
+                    height: 6,
+                    color: LineItUpColorTheme().grey20,
                   ),
-                )
-              ],
+                  const SizedBox(height: 24),
+                  Text(translate(context, 'restaurants_near_you'),
+                      style: LineItUpTextTheme().body.copyWith(
+                            fontWeight: FontWeight.w600,
+                          )),
+                  const SizedBox(height: 16),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 16),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: [
+                              RestaurantCard(
+                                image: LineItUpImages.restaurant1,
+                                restaurantName: 'Tasty Fastfood & Bar B.B.Q',
+                                rating: '4.7',
+                                totalReviews: '7.4k',
+                                distance: '0.4 mi',
+                                deliveryTime: '30 min',
+                                deliveryFee: '\$0',
+                                deliveryFeeOver: '\$14',
+                              ),
+                              SizedBox(width: 8),
+                              RestaurantCard(
+                                image: LineItUpImages.restaurant2,
+                                restaurantName: 'The Pizza Company',
+                                rating: '4.5',
+                                totalReviews: '5.4k',
+                                distance: '0.4 mi',
+                                deliveryTime: '30 min',
+                                deliveryFee: '\$0',
+                                deliveryFeeOver: '\$14',
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 24),
+                        Text(translate(context, 'popular_spots'),
+                            style: LineItUpTextTheme().body.copyWith(
+                                  fontWeight: FontWeight.w600,
+                                )),
+                        const SizedBox(height: 16),
+                        const SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: [
+                              PopularSpotsCard(
+                                image: LineItUpImages.popularSpot1,
+                                spotName: 'Subway',
+                                time: '30-45 min',
+                              ),
+                              SizedBox(width: 8),
+                              PopularSpotsCard(
+                                image: LineItUpImages.popularSpot2,
+                                spotName: 'Starbucks',
+                                time: '30 min',
+                              ),
+                              SizedBox(width: 8),
+                              PopularSpotsCard(
+                                image: LineItUpImages.popularSpot3,
+                                spotName: 'McDonalds',
+                                time: '30 min',
+                              ),
+                              SizedBox(width: 8),
+                              PopularSpotsCard(
+                                image: LineItUpImages.popularSpot1,
+                                spotName: 'Subway',
+                                time: '30-45 min',
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 24),
+                        Text(translate(context, 'shop_categories'),
+                            style: LineItUpTextTheme().body.copyWith(
+                                  fontWeight: FontWeight.w600,
+                                )),
+                        const SizedBox(height: 16),
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: [
+                              CategoryCard(
+                                onTap: () {},
+                                categoryText: 'Grocery',
+                                categoryImage: LineItUpImages.grocery,
+                                isSelected: true,
+                              ),
+                              const SizedBox(width: 8),
+                              CategoryCard(
+                                onTap: () {},
+                                categoryText: 'Fast Food',
+                                categoryImage: LineItUpImages.fastFood,
+                                isSelected: true,
+                              ),
+                              const SizedBox(width: 8),
+                              CategoryCard(
+                                onTap: () {},
+                                categoryText: 'Coffee',
+                                categoryImage: LineItUpImages.coffee,
+                                isSelected: true,
+                              ),
+                              const SizedBox(width: 8),
+                              CategoryCard(
+                                onTap: () {},
+                                categoryText: 'Pizza',
+                                categoryImage: LineItUpImages.pizza,
+                                isSelected: true,
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(height: 24),
+                        Text(translate(context, 'discount_offers'),
+                            style: LineItUpTextTheme().body.copyWith(
+                                  fontWeight: FontWeight.w600,
+                                )),
+                        const SizedBox(height: 12),
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
-          ),
-          const SizedBox(height: 24),
-          //divder
-          Container(
-            height: 6,
-            color: LineItUpColorTheme().grey20,
-          ),
-          const SizedBox(height: 24),
-          
+          )
         ],
       ),
     );

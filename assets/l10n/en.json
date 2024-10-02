@@ -201,5 +201,10 @@
     "pickup": "Pickup",
     "categories": "Categories",
     "stores_near_you": "Stores Near You",
-    "by": "By "
+    "by": "By ",
+    "delivery_fee_over": "Delivery fee over",
+    "restaurants_near_you": "Restaurants Near You",
+    "popular_spots": "Popular Spots",
+    "shop_categories": "Shop Categories",
+    "discount_offers": "Discount Offers"
 }
